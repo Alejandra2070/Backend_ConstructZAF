@@ -14,7 +14,7 @@ public class Login {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_login;
 
-    private enum rol{Administrador, Proveefor, Cliente};
+    private enum rol{Administrador, Proveedor, Cliente};
     private String username;
     private String password;
 

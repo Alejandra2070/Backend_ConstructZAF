@@ -14,7 +14,7 @@ public class Factura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_factura;
 
-    private enum metodo_pago{Tarjeta, Transacción, Efectivo};
+    private enum metodo_pago{Tarjeta, Transacción};
 
     @ManyToOne
     @JoinColumn(name = "reserva_id")

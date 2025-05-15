@@ -1,5 +1,6 @@
 package com.constructzaf.project.domain;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -17,10 +18,12 @@ public class Usuarios {
     private Long id_herramienta;
 
     private String nombre;
-    private String descripcion;
-    private String estado;
-    private String imagen;
-    private Long precio;
+    private String apellido;
+    private String correo;
+    private Long telefono;
+    private Long cedula;
+    private enum rol{Administrador, Proveedor, Cliente};
+    private LocalDate fecha_registro;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Alquiler> alquiler;
@@ -36,27 +39,26 @@ public class Usuarios {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Factura> factura;
-   
 
     public Usuarios() {
     }
-    
-    public Usuarios(Long id_herramienta, String nombre, String descripcion, String estado, String imagen, Long precio,
-            List<Alquiler> alquiler, Login login, Reporte reportes, List<Reservas> reserva, List<Factura> factura) {
+
+    public Usuarios(Long id_herramienta, String nombre, String apellido, String correo, Long telefono, Long cedula,
+            LocalDate fecha_registro, List<Alquiler> alquiler, Login login, Reporte reportes, List<Reservas> reserva,
+            List<Factura> factura) {
         this.id_herramienta = id_herramienta;
         this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.imagen = imagen;
-        this.precio = precio;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.cedula = cedula;
+        this.fecha_registro = fecha_registro;
         this.alquiler = alquiler;
         this.login = login;
         this.reportes = reportes;
         this.reserva = reserva;
         this.factura = factura;
     }
-
-
 
     public Long getId_herramienta() {
         return id_herramienta;
@@ -74,36 +76,44 @@ public class Usuarios {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getImagen() {
-        return imagen;
+    public Long getTelefono() {
+        return telefono;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
     }
 
-    public Long getPrecio() {
-        return precio;
+    public Long getCedula() {
+        return cedula;
     }
 
-    public void setPrecio(Long precio) {
-        this.precio = precio;
+    public void setCedula(Long cedula) {
+        this.cedula = cedula;
+    }
+
+    public LocalDate getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(LocalDate fecha_registro) {
+        this.fecha_registro = fecha_registro;
     }
 
     public List<Alquiler> getAlquiler() {
