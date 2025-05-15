@@ -2,9 +2,7 @@ package com.constructzaf.project.infrastructure.repositorys.Herramienta;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.stereotype.Service;
-
 import com.constructzaf.project.application.service.HerramientaService;
 import com.constructzaf.project.domain.Herramientas;
 
@@ -36,22 +34,23 @@ public class HerramientaServiceImpl implements HerramientaService{
     public Herramientas pathHerramienta(Long id, Herramientas herramienta) {
         Herramientas herramientaActualizada = herramientasRepository.findById(id).orElseThrow(() -> new RuntimeException("Herramienta no encontrada con id: " + id));;
 
-        if(herramienta.getName() !=null){
-            herramientaActualizada.setName(herramienta.getName());
+        if(herramienta.getNombre() !=null){
+            herramientaActualizada.setNombre(herramienta.getNombre());
         }
-        if(herramienta.getApellido() !=null){
-            herramientaActualizada.setApellido(herramienta.getApellido());
+        if(herramienta.getDescripcion() !=null){
+            herramientaActualizada.setDescripcion(herramienta.getDescripcion());
+        }
+        if(herramienta.getEstado() !=null){
+            herramientaActualizada.setEstado(herramienta.getEstado());
+        }
+        if(herramienta.getImagen() !=null){
+            herramientaActualizada.setImagen(herramienta.getImagen());
+        }
+        if(herramienta.getPrecio() !=null){
+            herramientaActualizada.setPrecio(herramienta.getPrecio());
         }
         herramientasRepository.save(herramientaActualizada);
 
-        
         return herramientaActualizada;
     }
-
-   
-    
-
-    
-
-    
 }
