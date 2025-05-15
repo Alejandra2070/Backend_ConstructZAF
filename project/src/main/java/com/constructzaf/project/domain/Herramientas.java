@@ -7,15 +7,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Usuarios {
+public class Herramientas {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_herramienta;
@@ -26,27 +28,22 @@ public class Usuarios {
     private String imagen;
     private Long precio;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Alquiler> alquiler;
+    @ManyToOne
+    @JoinColumn(name = "inventario_id")
+    private Inventario inventario;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Login login;
-
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Reporte reportes;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "herramienta", cascade = CascadeType.ALL)
     private List<Reservas> reserva;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Factura> factura;
-
-    public Usuarios(int id_herramienta, String nombre, String descripcion, String estado, String imagen, Long precio) {
+    public Herramientas(int id_herramienta, String nombre, String descripcion, String estado, String imagen,
+            Long precio, Inventario inventario, List<Reservas> reserva) {
         this.id_herramienta = id_herramienta;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
         this.imagen = imagen;
         this.precio = precio;
+        this.inventario = inventario;
+        this.reserva = reserva;
     }
 }

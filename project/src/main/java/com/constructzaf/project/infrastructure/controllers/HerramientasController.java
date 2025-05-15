@@ -1,12 +1,20 @@
 package com.constructzaf.project.infrastructure.controllers;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.constructzaf.project.application.service.HerramientaService;
+import com.constructzaf.project.domain.Herramienta;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,31 +28,37 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequestMapping("construc/herramientas")
 public class HerramientasController {
     @Autowired
-    private HerramientasService HerramientasService;
+    private HerramientaService HerramientasService;
 
     
     @GetMapping
-    public List<Herramientas> list(){
-        return service.findAll();
+    public List<Herramienta> list(){
+        return HerramientasService.findAll();
     }
 
+    
     @GetMapping("/{id}")
-    public ResponseEntity<?> view(@PathVariable Long id) {
-        Optional<Herramientas> herramientaView = HerramientasService.findById(id);
-        if (herramientas.isPresent()) {
-            return ResponseEntity.ok(herramientaView);
+    public ResponseEntity<Herramienta> view(@PathVariable Long id) {
+        Optional<Herramienta> herramientaView = HerramientasService.findById(id);
+        if (herramientaView.isPresent()) {
+            return ResponseEntity.ok(herramientaView.get());
         }
-        return ResponseEntity.notFound();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
-
+    
     @PostMapping
-    public ResponseEntity<Herramientas> createHerramienta(@RequestBody Herramienta herramienta)  {
-        Herramienta save = HerramientasService.save(herramienta);
+    public ResponseEntity<Herramienta> createHerramienta(@RequestBody Herramienta herramienta)  {
+        Herramienta save = HerramientasService.crearHerramienta(herramienta);
 
-        return new ResponseEntity<>("La herramienta " + save);
+        return ResponseEntity.status(HttpStatus.CREATED).body(save);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Herramienta> parcialUpdate(@PathVariable Long id, @RequestBody Herramienta herramienta){
+        return ResponseEntity.ok().body(HerramientasService.pathHerramienta(id,herramienta));
+    }
 
+    /* 
     @PutMapping("/{id}")
     public ResponseEntity<Herramienta> actualizarHerramientas(@Valid @RequestBody Herramienta herramienta,@PathVariable Long id )  {
         
@@ -55,5 +69,5 @@ public class HerramientasController {
         }
         return ResponseEntity.notFound();
     }
-    
+    */
 }
