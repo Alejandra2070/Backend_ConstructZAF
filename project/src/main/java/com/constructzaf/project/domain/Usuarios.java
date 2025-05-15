@@ -36,10 +36,11 @@ public class Usuarios {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Factura> factura;
+   
 
     public Usuarios() {
     }
-
+    
     public Usuarios(Long id_herramienta, String nombre, String descripcion, String estado, String imagen, Long precio,
             List<Alquiler> alquiler, Login login, Reporte reportes, List<Reservas> reserva, List<Factura> factura) {
         this.id_herramienta = id_herramienta;
@@ -54,6 +55,8 @@ public class Usuarios {
         this.reserva = reserva;
         this.factura = factura;
     }
+
+
 
     public Long getId_herramienta() {
         return id_herramienta;
