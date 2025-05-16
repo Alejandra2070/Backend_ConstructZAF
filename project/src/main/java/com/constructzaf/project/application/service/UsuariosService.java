@@ -12,4 +12,6 @@ public interface UsuariosService {
     public Usuarios crearUsuario(Usuarios usuarios);
 
     public Usuarios actualizarUsuario(Long id,Usuarios usuarios);
+
+    public Usuarios eliminarUsuario(Long id);
 }
