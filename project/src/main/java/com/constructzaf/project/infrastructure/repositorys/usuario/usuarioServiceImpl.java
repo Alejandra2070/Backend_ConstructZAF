@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.constructzaf.project.application.service.UsuariosService;
 import com.constructzaf.project.domain.Usuarios;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 @Service
 public class usuarioServiceImpl implements UsuariosService{
@@ -38,22 +40,37 @@ public class usuarioServiceImpl implements UsuariosService{
         if(usuarios.getNombre() !=null){
             usuariosActualizado.setNombre(usuarios.getNombre());
         }
-        if(usuarios.getDescripcion() !=null){
-            usuariosActualizado.setDescripcion(usuarios.getDescripcion());
+        if(usuarios.getApellido() !=null){
+            usuariosActualizado.setApellido(usuarios.getApellido());
         }
-        if(usuarios.getEstado() !=null){
-            usuariosActualizado.setEstado(usuarios.getEstado());
+        if(usuarios.getCorreo() !=null){
+            usuariosActualizado.setCorreo(usuarios.getCorreo());
         }
-        if(usuarios.getImagen() !=null){
-            usuariosActualizado.setImagen(usuarios.getImagen());
+        if(usuarios.getTelefono() !=null){
+            usuariosActualizado.setTelefono(usuarios.getTelefono());
         }
-        if(usuarios.getPrecio() !=null){
-            usuariosActualizado.setPrecio(usuarios.getPrecio());
+        if(usuarios.getCedula() !=null){
+            usuariosActualizado.setCedula(usuarios.getCedula());
+        }
+        if(usuarios.getFecha_registro() !=null){
+            usuariosActualizado.setFecha_registro(usuarios.getFecha_registro());
         }
 
         usuarioRepository.save(usuariosActualizado);
 
         return usuariosActualizado;
+    }
+
+    @Override
+    public Usuarios eliminarUsuario(Long id) {
+       Optional<Usuarios> usuario = usuarioRepository.findById(id);
+
+       if (!usuario.isPresent()) {
+            throw new EntityNotFoundException("el usuario no se encuentra registrado");
+       }
+       usuarioRepository.deleteById(id);
+       
+       return usuario.get();
     }
 
 }

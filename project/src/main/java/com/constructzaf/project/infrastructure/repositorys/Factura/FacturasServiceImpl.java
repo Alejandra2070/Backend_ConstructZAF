@@ -1,9 +1,13 @@
 package com.constructzaf.project.infrastructure.repositorys.Factura;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.constructzaf.project.application.service.FacturasService;
 import com.constructzaf.project.domain.Factura;
 
+@Service
 public class FacturasServiceImpl implements FacturasService{
 
     private FacturasRepository facturasRepository;
