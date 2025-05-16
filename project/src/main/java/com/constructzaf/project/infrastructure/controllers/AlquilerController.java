@@ -13,7 +13,7 @@ import com.constructzaf.project.application.service.AlquilerService;
 import com.constructzaf.project.domain.Alquiler;
 
 @RestController
-@RequestMapping("construc/login")
+@RequestMapping("construc/alquiler")
 public class AlquilerController {
     
     @Autowired

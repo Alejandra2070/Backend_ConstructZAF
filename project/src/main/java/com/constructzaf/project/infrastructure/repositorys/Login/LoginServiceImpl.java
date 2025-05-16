@@ -1,7 +1,6 @@
 package com.constructzaf.project.infrastructure.repositorys.Login;
 
 import org.springframework.stereotype.Service;
-
 import com.constructzaf.project.application.service.LoginService;
 import com.constructzaf.project.domain.Login;
 

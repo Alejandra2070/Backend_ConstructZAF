@@ -1,6 +1,5 @@
 package com.constructzaf.project.infrastructure.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,11 +10,14 @@ import com.constructzaf.project.application.service.LoginService;
 import com.constructzaf.project.domain.Login;
 
 @RestController
-@RequestMapping("construc/herramientas")
+@RequestMapping("construc/login")
 public class LoginController {
     
-    @Autowired
-    private LoginService loginService;
+    private final LoginService loginService;
+
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
+    }
 
     @PostMapping
     public ResponseEntity<Login> crearLogin(@RequestBody Login login){
@@ -23,4 +25,5 @@ public class LoginController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(save);
     }
+    
 }
