@@ -1,26 +1,22 @@
 package com.constructzaf.project.infrastructure.controllers.AuthController;
 
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.constructzaf.project.application.service.AuthService;
 import com.constructzaf.project.domain.Login;
+import com.constructzaf.project.domain.RegistroRequest;
 import com.constructzaf.project.domain.Token;
-import com.constructzaf.project.domain.Usuarios;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
-    private AuthService authService;
+    private final AuthService authService;
 
     @PostMapping(value = "login")
     public ResponseEntity<Token> Login(@RequestBody Login login){
@@ -29,9 +25,9 @@ public class AuthController {
     }
 
     @PostMapping(value = "registro")
-    public ResponseEntity<Token> registro(@RequestBody Usuarios usuarios) {
+    public ResponseEntity<Token> registro(@RequestBody RegistroRequest request) {
 
-        return ResponseEntity.ok(authService.register(usuarios));
+        return ResponseEntity.ok(authService.register(request));
     }
     
 }

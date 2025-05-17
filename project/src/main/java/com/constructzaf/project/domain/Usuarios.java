@@ -1,28 +1,41 @@
 package com.constructzaf.project.domain;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import lombok.Builder;
 
 @Entity
-public class Usuarios {
+@Builder
+public class Usuarios implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_herramienta;
+    private Long id_usuario;
 
+    @Column(nullable = false)
     private String nombre;
+    private String contraseña;
     private String apellido;
     private String correo;
     private Long telefono;
     private Long cedula;
-    private enum rol{Administrador, Proveedor, Cliente};
+    
+    Role rol;
     private LocalDate fecha_registro;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -43,15 +56,17 @@ public class Usuarios {
     public Usuarios() {
     }
 
-    public Usuarios(Long id_herramienta, String nombre, String apellido, String correo, Long telefono, Long cedula,
-            LocalDate fecha_registro, List<Alquiler> alquiler, Login login, Reporte reportes, List<Reservas> reserva,
-            List<Factura> factura) {
-        this.id_herramienta = id_herramienta;
+    public Usuarios(Long id_usuario, String nombre, String contraseña, String apellido, String correo, Long telefono,
+            Long cedula, Role rol, LocalDate fecha_registro, List<Alquiler> alquiler, Login login, Reporte reportes,
+            List<Reservas> reserva, List<Factura> factura) {
+        this.id_usuario = id_usuario;
         this.nombre = nombre;
+        this.contraseña = contraseña;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
         this.cedula = cedula;
+        this.rol = rol;
         this.fecha_registro = fecha_registro;
         this.alquiler = alquiler;
         this.login = login;
@@ -60,12 +75,20 @@ public class Usuarios {
         this.factura = factura;
     }
 
-    public Long getId_herramienta() {
-        return id_herramienta;
+    public Long getId_usuario() {
+        return id_usuario;
     }
 
-    public void setId_herramienta(Long id_herramienta) {
-        this.id_herramienta = id_herramienta;
+    public void setId_usuario(Long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public String getNombre() {
@@ -155,6 +178,53 @@ public class Usuarios {
     public void setFactura(List<Factura> factura) {
         this.factura = factura;
     }
+
+    public Role getRol() {
+        return rol;
+    }
+
+    public void setRol(Role rol) {
+        this.rol = rol;
+    }
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(rol.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return this.contraseña;
+    }
+
+    @Override
+    public String getUsername() {
+       return this.nombre;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    
 
     
 }
