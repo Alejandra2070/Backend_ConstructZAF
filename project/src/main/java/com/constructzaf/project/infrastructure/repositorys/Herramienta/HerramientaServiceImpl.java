@@ -53,4 +53,20 @@ public class HerramientaServiceImpl implements HerramientaService{
 
         return herramientaActualizada;
     }
+
+    @Override
+    public Optional<Herramientas> update(Long id, Herramientas product) {
+        Optional<Herramientas> herramientasOptional = herramientasRepository.findById(id);
+        if (herramientasOptional.isPresent()) {
+            Herramientas herramienta = herramientasOptional.orElseThrow();
+            
+            herramienta.setNombre(product.getNombre());
+            herramienta.setDescripcion(product.getDescripcion());
+            herramienta.setEstado(product.getEstado());
+            herramienta.setImagen(product.getImagen());
+            herramienta.setPrecio(product.getPrecio());
+            return Optional.of(herramientasRepository.save(herramienta));
+        }
+        return herramientasOptional;
+    }
 }

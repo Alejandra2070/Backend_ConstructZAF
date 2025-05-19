@@ -13,4 +13,6 @@ public interface HerramientaService {
     public Herramientas crearHerramienta(Herramientas herramienta);
 
     public Herramientas pathHerramienta(Long id, Herramientas herramienta);
+
+    Optional<Herramientas> update(Long id, Herramientas herramienta);
 }
