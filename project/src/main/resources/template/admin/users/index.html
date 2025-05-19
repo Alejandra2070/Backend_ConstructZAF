@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Munu para móvil -->
+    <div id="hamburger" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu lateral -->
+    <div id="lateral" class="lateral">
+        <h2>CONSTRUCT <br> ZAF</h2>
+        <ul id="menu">
+            <li><img src="/imagenes/hogar.png"><a href="/admin/home/index.html">Inicio</a></li>
+            <li class="active"><img src="/imagenes/perfil.png"><a href="/admin/users/index.html">Usuarios</a></li>
+            <li><img src="/imagenes/acuerdo.png"><a href="/admin/rental/index.html">Alquileres</a></li>
+            <li><img src="/imagenes/listas-de-control.png"><a href="/admin/payments/index.html">Pagos</a></li>
+            <li><img src="/imagenes/diagrama.png"><a href="/admin/reports/index.html">Reportes</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido  -->
+    <div class="content">
+        <header class="header-usuarios">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar usuario..." />
+                <button class="btn-add"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="admin-icon">
+                <i class="fas fa-user-shield"></i> Administrador
+            </div>
+        </header>
+
+        <h2 class="title-usuarios">
+            <i class="fas fa-users"></i> Gestion de usuarios
+        </h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>Alejandra Machuca</td>
+                        <td>aleja@gmail.com</td>
+                        <td>Proveedor</td>
+                        <td>Activo</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Franco Guerrero</td>
+                        <td>janfra@gmail.com</td>
+                        <td>Cliente</td>
+                        <td>Inactivo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="btn-actions">
+            <button onclick="abrirPopup('editarPopup')" class="btn-edit">Editar</button>
+            <button onclick="abrirPopup('eliminarPopup')" class="btn-delete">Eliminar</button>
+            <button onclick="abrirPopup('crearPopup')" class="btn-crear">Crear</button>
+        </div>
+
+        <!-- Popup Crear Usuarios -->
+        <div class="popup" id="crearPopup">
+            <div class="popup-contenido">
+                <span class="cerrar" onclick="cerrarPopup('crearPopup')">&times;</span>
+                <h2>Crear nuevo usuario</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" placeholder="Apellido">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="email" id="correo" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha-ingreso">Fecha de ingreso</label>
+                            <input type="date" id="fecha-ingreso" placeholder="Fecha de ingreso">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <label for="cedula">Cédula</label>
+                            <input type="text" id="cedula" placeholder="Cédula">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rol">Rol</label>
+                            <select id="rol" name="rol">
+                                <option value="">Seleccione un rol</option>
+                                <option value="admin">Administrador</option>
+                                <option value="proveedor">Proveedor</option>
+                                <option value="cliente">Cliente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="contrasena">Contraseña</label>
+                            <input type="password" id="contrasena" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" class="btn-amarillo">Crear</button>
+                        <button type="button" class="btn-gris" onclick="cerrarPopup('crearPopup')">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- PopUp editar usuario -->
+        <div class="popup" id="editarPopup">
+            <div class="popup-contenido">
+                <span class="cerrar" onclick="cerrarPopup('editarPopup')">&times;</span>
+                <h2>Editar usuario</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id">ID</label>
+                            <input type="text" id="id" placeholder="ID">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" placeholder="Apellido">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="email" id="correo" placeholder="Correo">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" placeholder="Teléfono">
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" class="btn-amarillo">Editar</button>
+                        <button type="button" class="btn-gris" onclick="cerrarPopup('editarPopup')">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- PopUp Eliminar Usuario -->
+         <div class="popup" id="eliminarPopup">
+            <div class="popup-contenido">
+                <span class="cerrar" onclick="cerrarPopup('eliminarPopup')">&times;</span>
+                <h2>Eliminar usuario</h2>
+                <p>ID del usuario a eliminar:</p>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id">ID</label>
+                            <input type="text" id="id" placeholder="ID">
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" class="btn-amarillo">Eliminar</button>
+                        <button type="button" class="btn-gris" onclick="cerrarPopup('eliminarPopup')">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

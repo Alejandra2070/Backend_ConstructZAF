@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+}
+
+/*Menu lateral */
+
+.lateral{
+    width: 220px;
+    background-color: #17324D;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+.lateral h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.lateral ul{
+    list-style: none;
+}
+
+.lateral ul li{
+    padding: 15px 25px;
+    cursor: pointer;
+}
+
+.lateral ul li a{
+    text-decoration: none;
+    color: white;
+    margin-left: 2vw;
+}
+
+li img{
+    width: 2vw;
+    height: 2vw;
+}
+
+.lateral ul li.active,
+.lateral ul li:hover{
+    background-color: #385879;
+    border-left: 4px solid #f8b231;
+}
+
+/* Boton hamburguesa*/
+
+.hamburger{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    cursor: pointer;
+}
+
+.hamburger span{
+    height: 4px;
+    background-color: #17324D;
+    border-radius: 2px;
+}
+
+.content{
+    margin-left: 17vw;
+    margin-top: 1vw;
+}
+
+/* Encabezado */
+.header-usuarios{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+}
+
+/*Barra de busqueda*/
+.search-bar{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input{
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.btn-add{
+    background-color: #f8b231;
+    border: none;
+    border-radius: 50%;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.title-usuarios{
+    text-align: center;
+    font-size: 24px;
+    margin-top: 10px;
+    color: #17324D;
+}
+
+.table-container{
+    width: 100%;
+    padding: 20px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #F4F5FB;
+}
+
+th,td{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn-actions{
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-edit,
+.btn-delete{
+    background-color: #f8b231;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/*Popup*/
+.popup{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.popup-contenido .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.popup-contenido .form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.popup-contenido .form-group:last-child {
+    margin-right: 0;
+}
+
+.popup-contenido .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.popup-contenido .form-group input,
+.popup-contenido .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.popup-contenido .form-group input:focus,
+.popup-contenido .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.popup-contenido h2 i {
+    margin-right: 5px;
+}
+.popup-contenido{
+    background: #e1e3e6;
+    padding: 25px;
+    width: 400px;
+    margin: 5% auto;
+    border-radius: 15px;
+    position: relative;
+}
+
+.popup-contenido form input{
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.botones{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-amarilo{
+    background-color: #f8b231;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-gris{
+    background-color: #ccc;
+    color: black;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cerrar{
+    position: absolute;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px){
+    .lateral{
+        transform: translateX(-100%);
+    }
+
+    .lateral.open{
+        transform: translateX(0);
+    }
+
+    .hamburger{
+        display: flex;
+    }
+
+    .content{
+        margin-left: 0;
+        padding-top: 60px;
+    }
+}
