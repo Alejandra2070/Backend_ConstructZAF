@@ -1,6 +1,7 @@
 package com.constructzaf.project.infrastructure.controllers.AuthController;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.constructzaf.project.domain.Token;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:8080", "http://127.0.0.1:5500"})
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {

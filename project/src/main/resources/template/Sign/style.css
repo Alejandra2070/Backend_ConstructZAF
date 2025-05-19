@@ -1,0 +1,176 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #255789;
+}
+
+#main {
+    border-radius: 13px;
+    display: flex;
+    width: 950px;
+    height: 600px;
+    border: 3px solid #cccccc;
+    box-shadow: 0 0 10px rgba(136, 138, 181, 0.1);
+}
+
+#left {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    flex: 1;
+    background-color: #f5ba49; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #17324d; 
+}
+
+img#casco {
+    width: clamp(15px, 10vw, 70px);
+}
+
+#nameLogo {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    text-align: center;
+    margin: 10px 0;
+}
+
+#imgWeb {
+    margin-top: 20px;
+    
+}
+img#construccion{
+    width: clamp(200px, 10vw, 800px);
+}
+
+#right {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    flex: 1;
+    background-color: #F0F0F1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+#titleLogin {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #17324d;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#input1{
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-left: 3vw;
+    font-size: 1vw;
+    background-color: #FBFBFB;
+    border-radius: 4px;
+    display: block;
+}
+#right input {
+    border: none;
+    background-color: inherit;
+    margin-bottom: 5px;
+}
+
+img.icon{
+    width: 2vh;
+}
+
+#right button {
+    height: 5vh;
+    width: 75%;
+    padding: 10px;
+    background-color: #2580e4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-left: 3vw;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#right button:hover {
+    background-color: #255789;
+}
+
+#right p {
+    text-align: center;
+    font-size: 1em;
+    margin-top: 16px;
+    color: #606F81;
+}
+
+#right span {
+    color: #2580e4;
+    cursor: pointer;
+}
+
+#right span:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 578px) {
+    #input1{
+        width: 96%;
+        margin-left: -1.2vw;
+        font-size: 1.4vw;
+    }
+    #right input {
+        width: 34vw;
+        margin-top: 1.6vw;
+    }
+    #right p {
+        font-size: 1em;
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #main {
+    border-radius: 13px;
+    display: flex;
+    width: 950px;
+    height: 600px;
+    border: 3px solid #cccccc;
+    box-shadow: 0 0 10px rgba(136, 138, 181, 0.1);
+    }
+    #nameLogo {
+        font-size: clamp(1.6rem, 4vw, 3rem);
+    }
+    #imgWeb {
+        margin-top: 20px;
+        
+    }
+    img#construccion{
+        width: clamp(125px, 10vw, 800px);
+    }
+    #titleLogin {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+    }
+    #input1{
+        width: 96%;
+        margin-left: -1.2vw;
+        font-size: 1vw;
+    }
+    #right input {
+        width: 34vw;
+        margin-top: 1.6vw;
+    }
+    #right button {
+        height: 4vh;
+        width: 72%;
+        margin-left: 6vw;
+        font-size: 0.9em;
+    }
+    #right p {
+        font-size: 0.9em;
+        margin-top: 16px;
+    }
+}
