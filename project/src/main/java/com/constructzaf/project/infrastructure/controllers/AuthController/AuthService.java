@@ -12,6 +12,8 @@ import com.constructzaf.project.domain.RegistroRequest;
 import com.constructzaf.project.domain.Role;
 import com.constructzaf.project.domain.Token;
 import com.constructzaf.project.domain.Usuarios;
+import com.constructzaf.project.exception.AuthenticationException;
+import com.constructzaf.project.exception.ResourceNotFoundException;
 import com.constructzaf.project.infrastructure.repositorys.usuario.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,10 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public Token login(Login login) {
+
+        UserDetails users = usuarioRepository.findByNombre(login.getUsername())
+            .orElseThrow(() -> new AuthenticationException("El usuario " + login.getUsername() + " no fue encontrado"));
+
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
 
         UserDetails user = usuarioRepository.findByNombre(login.getUsername()).orElseThrow();
