@@ -2,52 +2,6 @@ const items = document.querySelectorAll('#menu li');
 const late = document.getElementById('lateral');
 const hamburger = document.getElementById('hamburger');
 
-
-
-const token = localStorage.getItem('token');
-console.log('Token guardado:', token);
-
-
-fetch('http://localhost:8080/construc/usuarios', {
-method: 'GET',
-headers: {
-    'Authorization': 'Bearer ' + token,
-    'Content-Type': 'application/json'
-}
-})
-.then(res => {
-if (!res.ok) throw new Error('No autorizado o error en la petición');
-return res.json();
-})
-.then(data => {
-    console.log('Datos recibidos:', data);
-    
-    let datos = document.getElementById("table-container")
-    datos.innerHTML = ``
-
-    data.forEach(a => {
-        datos.innerHTML+=`
-            <table>
-                <tbody>
-                    <tr>
-                        <td>${a.id_usuario}</td>
-                        <td>${a.nombre}</td>
-                        <td>${a.correo}</td>
-                        <td>${a.rol}</td>
-                        <td>${a.enabled}</td>
-                    </tr>
-                </tbody>
-        `
-    })
-})
-.catch(err => {
-    console.error('Error:', err);
-});
-
-
-
-
-
 // Activar item seleccionado
 
 items.forEach(item => {

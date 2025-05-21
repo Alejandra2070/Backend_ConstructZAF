@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Menu para móvil -->
+    <div id="hamburger" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu lateral -->
+    <div id="lateral" class="lateral">
+        <h2>CONSTRUCT <br> ZAF</h2>
+        <ul id="menu">
+            <li class="active"><img src="/imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
+            <li><img src="/imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
+            <li><img src="/imagenes/listas-de-control.png"><a href="../Factura/index.html">Facturación</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido  -->
+    <div class="content">
+        <div class="superior">
+            <div class="buscador">
+                <img id="busca" src="/imagenes/buscar.png">
+                <input id="search-item" class="buscar" type="text" placeholder="Buscar" onkeyup="search()">
+            </div>
+            <p><img src="/imagenes/usuario (1).png" id="user"> Proveedor</p>
+        </div> 
+
+        <h2 class="title-usuarios">Solicitudes de alquiler</h2>
+        <div class="dashboard">
+            <!-- tabla de informacion de todos los users -->
+            <div class="table-container">
+                <table id="miTabla">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Herramienta</th>
+                            <th>Usuario</th>
+                            <th>Fecha Reserva</th>
+                            <th>Fecha Entrega</th>
+                            <th>Confirmación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Taladro</td>
+                            <td>Alejandra</td>
+                            <td>12/05/2025</td>
+                            <td>15/05/2025</td>
+                            <td>
+                                <button>
+                                    <img id="confirmar" src="/imagenes/confirmar.png" alt="">
+                                </button>
+                                <button>
+                                    <img id="confirmar" src="/imagenes/denegar.png" alt="">
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Martillo</td>
+                            <td>Franco</td>
+                            <td>11/06/2025</td>
+                            <td>15/07/2025</td>
+                            <td>
+                                <button>
+                                    <img id="confirmar" src="/imagenes/confirmar.png" alt="">
+                                </button>
+                                <button>
+                                    <img id="confirmar" src="/imagenes/denegar.png" alt="">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-actions">
+                    <button onclick="abrirPopup('reportar')" class="btn-detalles">Reportar daños</button>
+                </div>
+            </div>
+
+
+            <!-- PopUp reportar -->
+            <div class="popup" id="reportar">
+                <div class="popups-contenido">
+                    <span class="cerrar" onclick="cerrarPopup('reportar')">&times;</span>
+                    <h3>Reportar daño</h3><br>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="username">ID</label>
+                            <input type="text" id="reportars" placeholder="Herramienta a reportar">
+                        </div>
+                    </div><br>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="username">Descripción del daño</label>
+                            <input type="text" id="reportars" placeholder="">
+                        </div>
+                    </div>
+                    <div class="btn-actions">
+                        <button onclick="abrirPopup('exitoR'), cerrarPopup('reportar')" class="btn-detalles">Enviar</button>
+                        <button onclick="cerrarPopup('reportar')" class="btn-descargar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PopUp reporte exitoso -->
+            <div class="popup" id="exitoR">
+                <div class="popups-contenido">
+                    <div id="exito">
+                        <h3>El reporte fue realizado con éxito.</h3><br>
+                    </div>
+                    <button onclick="cerrarPopup('exitoR')" class="btn-descargar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>

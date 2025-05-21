@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Munu para móvil -->
     <div id="hamburger" class="hamburger">
@@ -19,19 +21,102 @@
     <div id="lateral" class="lateral">
         <h2>CONSTRUCT <br> ZAF</h2>
         <ul id="menu">
-            <li ><img src="/imagenes/hogar.png"><a href="/admin/home/index.html">Inicio</a></li>
-            <li ><img src="/imagenes/perfil.png"><a href="/admin/users/index.html">Usuarios</a></li>
-            <li><img src="/imagenes/acuerdo.png" ><a href="/admin/rental/index.html">Alquileres</a></li>
-            <li class="active"><img src="/imagenes/listas-de-control.png"><a href="/admin/payments/index.html">Pagos</a></li>
-            <li><img src="/imagenes/diagrama.png" ><a href="/admin/reports/index.html">Reportes</a></li>
+            <li><img src="/imagenes/hogar.png"><a href="/admin/home/index.html">Inicio</a></li>
+            <li><img src="/imagenes/perfil.png"><a href="/admin/users/index.html">Usuarios</a></li>
+            <li><img src="/imagenes/acuerdo.png"><a href="/admin/rental/index.html">Alquileres</a></li>
+            <li class="active"><img src="/imagenes/listas-de-control.png"><a href="/admin/payments/index.html">Pagos</a>
+            </li>
+            <li><img src="/imagenes/diagrama.png"><a href="/admin/reports/index.html">Reportes</a></li>
         </ul>
     </div>
 
     <!-- Contenido  -->
-    <div class="content">
-        <h1>Bienvenido al panel de Control</h1>
-    </div>
+    <div class="content-pago">
+        
+        <div class="superior">
+            <div class="buscador">
+                <img id="busca-pago" src="/imagenes/buscar.png">
+                <input id="search-pay" class="buscar-pago" type="text" placeholder="Buscar" onkeyup="searchPay()">
+            </div>
+            <div class="userMenu">
+                <div id="userName" class="userName">
+                    <img src="/imagenes/usuario (1).png" id="user"> Administrador
+                </div>
+                <div id="user-menu" class="user-menu">
+                    <a href="#">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div> 
 
-<script src="script.js"></script>
+        <!-- Titulo del contendo -->
+        <h2 class="title-pago">Gestion de Pagos</h2>
+
+        <!-- Tabla con la información de los alquileres -->
+        <div class="table-container-pago">
+            <table id="miTabla-pago">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                        <th>Fecha Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>H001</td>
+                        <td>Alejandra</td>
+                        <td>$25.000</td>
+                        <td>Pagado</td>
+                        <td>05/05/2025</td>
+                    </tr>
+                    <tr>
+                        <td>H002</td>
+                        <td>Franco </td>
+                        <td>$30.000</td>
+                        <td>05/05/2025</td>
+                        <td>Pendiente</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="btn-actions-pago">
+            <button onclick="abrirPopupPago('verPagoPopup')" class="btn-ver-pago">Ver detalles</button>
+        </div>
+
+        <!-- PopUp Ver detaller alquileres -->
+        <div class="popupPago" id="verPagoPopup">
+            <div class="pago-conten">
+                <span class="cerrar" onclick="cerrarPopupPago('verPagoPopup')">&times;</span>
+                <h2 id="titulo">Detalles de alquiler</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id">ID</label>
+                            <input type="text" id="id-ver" >
+                        </div>
+                    </div>
+                </form>
+                <p><span>Usuario: </span> Alejandra Machuca</p>
+                <p><span>Email: </span> Alejandra@gmial.com</p>
+                <p><span>Telefono: </span> 3224739100</p>
+                <p><span>Herramienta: </span> Compresor X300</p>
+                <p><span>Dias de alquilado: </span> 4</p>
+                <p><span>Valor diario: </span> $10.000</p>
+                <p><span>Total: </span> $40.000</p>
+                <p><span>Estado: </span> Pendiente</p>
+                <p><span>Método de pago: </span> Efectivo</p>
+                
+                <div class="botonesPago">
+                    <button type="button" class="btn-gris" onclick="cerrarPopupPago('verPagoPopup')">Descargar PDF</button>
+                    <button type="button" class="btn-gris" onclick="cerrarPopupPago('verPagoPopup')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
 </body>
+
 </html>

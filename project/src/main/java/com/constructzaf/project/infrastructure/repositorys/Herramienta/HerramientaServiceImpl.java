@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import com.constructzaf.project.application.service.HerramientaService;
 import com.constructzaf.project.domain.Herramientas;
-import com.constructzaf.project.exception.ResourceNotFoundException;
 
 @Service
 public class HerramientaServiceImpl implements HerramientaService{
@@ -31,10 +30,9 @@ public class HerramientaServiceImpl implements HerramientaService{
        return herramientasRepository.save(herramienta);
     }
 
-    
     @Override
     public Herramientas pathHerramienta(Long id, Herramientas herramienta) {
-        Herramientas herramientaActualizada = herramientasRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Herramienta no encontrada con id: " + id));
+        Herramientas herramientaActualizada = herramientasRepository.findById(id).orElseThrow(() -> new RuntimeException("Herramienta no encontrada con id: " + id));;
 
         if(herramienta.getNombre() !=null){
             herramientaActualizada.setNombre(herramienta.getNombre());
@@ -55,13 +53,12 @@ public class HerramientaServiceImpl implements HerramientaService{
 
         return herramientaActualizada;
     }
-    
-    
+
     @Override
     public Optional<Herramientas> update(Long id, Herramientas product) {
         Optional<Herramientas> herramientasOptional = herramientasRepository.findById(id);
         if (herramientasOptional.isPresent()) {
-            Herramientas herramienta = herramientasOptional.orElseThrow(() -> new ResourceNotFoundException("Herramienta no encontrada con id: " + id));
+            Herramientas herramienta = herramientasOptional.orElseThrow();
             
             herramienta.setNombre(product.getNombre());
             herramienta.setDescripcion(product.getDescripcion());
@@ -72,5 +69,4 @@ public class HerramientaServiceImpl implements HerramientaService{
         }
         return herramientasOptional;
     }
-
 }

@@ -31,21 +31,23 @@ hamburger.addEventListener('click', () => {
     }
 })
 
-// Mostrar y ocultar popUp
-function abrirPopupPago(id){
+// Mostrar o ocultar los popUp
+
+function abrirPopup(id){
     document.getElementById(id).style.display = 'block';
 }
 
-function cerrarPopupPago(id){
+function cerrarPopup(id){
     document.getElementById(id).style.display = 'none';
 }
 
+
 // Filtar 
 
-function searchPay(){
-    const input = document.getElementById("search-pay");
+function search(){
+    const input = document.getElementById("search-item");
     const filter = input.value.toLowerCase();// pasa el texto del usuario a minuscula
-    const table = document.getElementById("miTabla-pago");// Obtiene la tabla HTML
+    const table = document.getElementById("miTabla");// Obtiene la tabla HTML
     const trs = table.getElementsByTagName("tr");// Obtiene todas las filas de la tabla
 
     for(let i=1; i < trs.length; i++){
@@ -64,21 +66,3 @@ function searchPay(){
         row.style.display = showRow ? "" : "none";// se aculta la tabla si no coincide con lo que el usuario busco
     }
 }
-
-// Mostrar y ocultar el menu del usuario 
-
-document.getElementById("userName").addEventListener("click", function(event){
-    event.stopPropagation(); // Evita el cierre inmediato
-    const menu = document.getElementById("user-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-});
-
-// Cierra el menu si se hace click afuera de el 
-document.addEventListener("click", function(event){
-    const menu = document.getElementById("user-menu");
-    const name = document.getElementById("userName");
-
-    if(!name.contains(event.target) && !menu.contains(event.target)){
-        menu.style.display = "none";
-    }
-})

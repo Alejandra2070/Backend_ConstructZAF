@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>herramientas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Menu para móvil -->
+    <div id="hamburger" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu lateral -->
+    <div id="lateral" class="lateral">
+        <h2>CONSTRUCT <br> ZAF</h2>
+        <ul id="menu">
+            <li class="active"><img src="/imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
+            <li><img src="/imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
+            <li><img src="/imagenes/listas-de-control.png"><a href="../Factura/index.html">Facturación</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido  -->
+    <div class="content">
+        <div class="superior">
+            <div class="buscador">
+                <img id="busca" src="/imagenes/buscar.png">
+                <input id="search-item" class="buscar" type="text" placeholder="Buscar" onkeyup="search()">
+                <button onclick="abrirPopup('crearH')" id="crear"><p>+</p></button>
+            </div>
+            <p><img src="/imagenes/usuario (1).png" id="user"> Proveedor</p>
+        </div> 
+        
+        <h2 class="title-usuarios"> Gestion de Herramientas</h2>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Mezcladora de concreto</h3><br>
+                <img id="image" src="/imagenes/Mezcladora.png" alt="">
+                <h3>Breve descripción</h3>
+                <h3>Precio:  $60.000</h3>
+                <h3>Cantidad:  4</h3>
+                <h3>Estado:  Disponible</h3><br>
+            </div>
+            <div class="card">
+                <h3>Mezcladora de concreto</h3><br>
+                <img id="image" src="/imagenes/Mezcladora.png" alt="">
+                <h3>Breve descripción</h3>
+                <h3>Precio:  $60.000</h3>
+                <h3>Cantidad:  4</h3>
+                <h3>Estado:  Disponible</h3><br>
+            </div>
+            <div class="card">
+                <h3>Mezcladora de concreto</h3><br>
+                <img id="image" src="/imagenes/Mezcladora.png" alt="">
+                <h3>Breve descripción</h3>
+                <h3>Precio:  $60.000</h3>
+                <h3>Cantidad:  4</h3>
+                <h3>Estado:  Disponible</h3><br>
+            </div>
+        </div><br>
+
+        <div class="btn-actions">
+            <button onclick="abrirPopup('detallesPopup')" class="btn-detalles">Editar</button>
+            <button onclick="abrirPopup('eliminar')" class="btn-descargar">Eliminar</button>
+        </div>
+
+        <!-- PopUp ver detalles -->
+        <div class="popup" id="detallesPopup">
+            <div class="popup-contenido">
+                <span class="cerrar" onclick="cerrarPopup('detallesPopup')">&times;</span>
+                <h3>Editar herramienta</h3><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rol">Rol</label>
+                        <select id="rol-crear" name="rol">
+                            <option value="">Seleccione un rol</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Ocupado">Ocupado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">ID</label>
+                        <input type="text" id="username-crear" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Nombre de Herramienta</label>
+                        <input type="password" id="contrasena-crear" placeholder="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Descripción</label>
+                        <input type="text" id="username-crear" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Estado</label>
+                        <input type="password" id="contrasena-crear" placeholder="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Precio</label>
+                        <input type="text" id="username-crear" placeholder="">
+                    </div>
+                </div>
+                <div class="btn-actions">
+                    <button onclick="abrirPopup('exito'), cerrarPopup('detallesPopup')" class="btn-detalles">Editar</button>
+                    <button onclick="cerrarPopup('detallesPopup')" class="btn-descargar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PopUp editado exitoso -->
+        <div class="popup" id="exito">
+            <div class="popups-contenido">
+                <div id="exito">
+                    <h3>La herramienta fue editada con éxito.</h3><br>
+                </div>
+                <button onclick="cerrarPopup('exito')" class="btn-descargar">Aceptar</button>
+            </div>
+        </div>
+
+        <!-- PopUp eliminar -->
+        <div class="popup" id="eliminar">
+            <div class="popups-contenido">
+                <span class="cerrar" onclick="cerrarPopup('eliminar')">&times;</span>
+                <h3>Eliminar herramienta</h3><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">ID</label>
+                        <input type="text" id="username-crear" placeholder="">
+                    </div>
+                </div>
+                <div class="btn-actions">
+                    <button onclick="abrirPopup('exitoE'), cerrarPopup('eliminar')" class="btn-detalles">Eliminar</button>
+                    <button onclick="cerrarPopup('eliminar')" class="btn-descargar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PopUp eliminado exitoso -->
+        <div class="popup" id="exitoE">
+            <div class="popups-contenido">
+                <div id="exito">
+                    <h3>La herramienta fue eliminada con éxito.</h3><br>
+                </div>
+                <button onclick="cerrarPopup('exitoE')" class="btn-descargar">Aceptar</button>
+            </div>
+        </div>
+
+        <!-- PopUp crear herramienta -->
+        <div class="popup" id="crearH">
+            <div class="popup-contenido">
+                <span class="cerrar" onclick="cerrarPopup('crearH')">&times;</span>
+                <h3>Registrar herramienta</h3><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Nombre de Herramienta</label>
+                        <input type="text" id="username-crear" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Descripción</label>
+                        <input type="password" id="contrasena-crear" placeholder="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Imagen</label>
+                        <input type="text" id="username-crear" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Disponibilidad</label>
+                        <input type="password" id="contrasena-crear" placeholder="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Precio</label>
+                        <input type="text" id="username-crear" placeholder="">
+                    </div>
+                </div>
+                <div class="btn-actions">
+                    <button onclick="abrirPopup('exitoG'), cerrarPopup('crearH')" class="btn-detalles">Guardar</button>
+                    <button onclick="cerrarPopup('crearH')" class="btn-descargar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PopUp guardado exitoso -->
+        <div class="popup" id="exitoG">
+            <div class="popups-contenido">
+                <div id="exito">
+                    <h3>La herramienta fue agregada con éxito.</h3><br>
+                </div>
+                <button onclick="cerrarPopup('exitoG')" class="btn-descargar">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>

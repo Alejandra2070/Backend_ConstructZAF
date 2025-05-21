@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
+
 <body>
     <!-- Munu para móvil -->
     <div id="hamburger" class="hamburger">
@@ -19,19 +21,67 @@
     <div id="lateral" class="lateral">
         <h2>CONSTRUCT <br> ZAF</h2>
         <ul id="menu">
-            <li ><img src="/imagenes/hogar.png"><a href="/admin/home/index.html">Inicio</a></li>
+            <li><img src="/imagenes/hogar.png"><a href="/admin/home/index.html">Inicio</a></li>
             <li><img src="/imagenes/perfil.png"><a href="/admin/users/index.html">Usuarios</a></li>
-            <li><img src="/imagenes/acuerdo.png" ><a href="/admin/rental/index.html">Alquileres</a></li>
+            <li><img src="/imagenes/acuerdo.png"><a href="/admin/rental/index.html">Alquileres</a></li>
             <li><img src="/imagenes/listas-de-control.png"><a href="/admin/payments/index.html">Pagos</a></li>
-            <li class="active"><img src="/imagenes/diagrama.png" ><a href="/admin/reports/index.html">Reportes</a></li>
+            <li class="active"><img src="/imagenes/diagrama.png"><a href="/admin/reports/index.html">Reportes</a></li>
         </ul>
     </div>
 
     <!-- Contenido  -->
-    <div class="content">
-        <h1>Bienvenido al panel de Control</h1>
+    <div class="content-repor">
+        <div class="superior">
+            <div class="buscador">
+                <img id="busca-repor" src="/imagenes/buscar.png">
+                <input id="search-repor" class="buscar-repor" type="text" placeholder="Buscar" onkeyup="searchRepor()">
+            </div>
+            <p><img src="/imagenes/usuario (1).png" id="user"> Administrador</p>
+        </div>
+
+        <!-- Titulo del contendo -->
+        <h2 class="title-repor">Gestion de Reportes </h2>
+        <!-- Selector de Mes -->
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <select style="padding: 5px 15px; border-radius: 8px; border: 1px solid #ccc;">
+                <option>Enero 2025</option>
+            </select>
+        </div>
+
+        <!-- Gráficos -->
+        <div style="display: flex; justify-content: space-around; margin-bottom: 30px;">
+            <div>
+                <canvas id="myChart" style="width: 60vw; max-width: 500px;"></canvas>
+            </div>
+            <div>
+                <canvas id="myChartBarra" style="width: 50vw; max-width: 450px;"></canvas>
+            </div>
+        </div>
+
+        <!-- Tabla de Datos -->
+        <div style="display: flex; justify-content: center;">
+            <table style="width: 60%; border-collapse: collapse; text-align: left; font-family: regular;">
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #ccc;">Total ingresos</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #ccc;">$1200.0000</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #ccc;">Total alquileres</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #ccc;">250</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #ccc;">Usuarios activos</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #ccc;">45</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Herramientas más usadas</td>
+                    <td style="padding: 10px;">Mezcladora</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

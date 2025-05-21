@@ -1,3 +1,12 @@
+@font-face {
+    font-family: bold;
+    src: url(/fuentes/PTSans-Bold.ttf);
+}
+@font-face {
+    font-family: regular;
+    src: url(/fuentes/PTSans-Regular.ttf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -12,6 +21,7 @@ body{
 /*Menu lateral */
 
 .lateral{
+    font-family: regular;
     width: 220px;
     background-color: #17324D;
     color: white;
@@ -25,6 +35,7 @@ body{
 .lateral h2{
     text-align: center;
     margin-bottom: 30px;
+    font-family: bold;
 }
 
 .lateral ul{
@@ -43,14 +54,16 @@ body{
 }
 
 li img{
-    width: 2vw;
-    height: 2vw;
+    width: 1.5vw;
+    height: 1.5vw;
+    margin-left: 1vw;
 }
 
 .lateral ul li.active,
 .lateral ul li:hover{
     background-color: #385879;
-    border-left: 4px solid #f8b231;
+    border-left: 4px solid #F5BA49;
+    height: 8vh;
 }
 
 /* Boton hamburguesa*/
@@ -61,7 +74,6 @@ li img{
     justify-content: space-between;
     width: 30px;
     height: 25px;
-    position: fixed;
     top: 15px;
     left: 15px;
     z-index: 1100;
@@ -74,6 +86,196 @@ li img{
     border-radius: 2px;
 }
 
+/*-------------------------------------------------------------*/
+/*Contenido*/
+
+.content-pago{
+    margin-left: 17vw;
+    margin-top: 1vw;
+}
+
+/* Encabezado */
+.superior{
+    display: flex;
+    width: 80vw;
+    justify-content: space-between;
+}
+
+.superior img{
+    width: 1.3vw;
+}
+
+img#user{
+    margin-right: 5px;
+}
+
+.userName{
+    display: flex;
+    align-items: center;
+    font-family: bold;
+    color: #17324D;
+    cursor: pointer;
+}
+.userMenu{
+    position: relative;
+    display: inline-block;
+}
+
+#userName{
+    cursor: pointer;
+    color: #17324D;
+    font-family: bold;
+}
+
+.user-menu{
+    display: none;
+    position: absolute;
+    left: -15px;
+    right: 0;
+    top: 33px;
+    background-color: #e1e3e6;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.user-menu a{
+    color: #17324D;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: regular;
+}
+
+.user-menu a:hover{
+    background-color: #f1f1f1;
+}
+
+
+/*Buscador*/
+
+img#busca-pago{
+    height: 2vw;
+    width: 2vw;
+}
+.buscador{
+    display: flex;
+    gap: 10px;
+}
+
+input.buscar-pago{
+    border-radius: 20px;
+    padding: 6px 30px;
+    color: #606F81;
+}
+
+.title-pago{
+    font-family: bold;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 10px;
+    color: #17324D;
+}
+
+/*Tabla de contenido*/
+.table-container-pago{
+    width: 100%;
+    padding: 20px;
+}
+
+table{
+    font-family: regular;
+    width: 95%;
+    border-collapse: collapse;
+    background-color: #F4F5FB;
+}
+
+th,td{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn-actions-pago{
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-ver-pago{
+    background-color: #f8b231;
+    color: #17324D;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: regular;
+}
+
+/*PopUp*/
+
+h2#titulo{
+    font-family: bold;
+    color: #17324D;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5vw;
+}
+.popupPago{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);/*Color de fondo cuando aparezca el popup*/
+}
+
+.pago-conten{
+    font-family: regular;
+    background: #e1e3e6;
+    padding: 25px;
+    width: 410px;
+    margin: 10% auto;
+    border-radius: 15px;
+    position: relative;
+}
+
+.botonesPago{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.btn-gris{
+    color: #17324D;
+    background-color: #f8b231;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn-amarillo{
+    color: #17324D;
+    background-color: #f8b231;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px 25px;
+}
+
+.cerrar{
+    position: absolute;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
 @media (max-width: 768px){
     .lateral{
         transform: translateX(-100%);
@@ -91,4 +293,12 @@ li img{
         margin-left: 0;
         padding-top: 60px;
     }
+
+    /*Tabla de contenido*/
+    .table-container-pago{
+        max-width: 400px;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
 }

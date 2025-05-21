@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import com.constructzaf.project.Jwt.JwtAuthenticatinFilter;
 
 
@@ -27,12 +30,15 @@ public class SecurituConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         return http
+            .cors() 
+            .and()
             .csrf(csrf -> 
                 csrf
                 .disable())
             .authorizeHttpRequests(authRequest ->
              authRequest
              .requestMatchers("/auth/**").permitAll()
+             .requestMatchers("/construc/alquiler/**").hasAnyAuthority("ADMIN", "USER", "PROVEEDOR")
              .anyRequest().authenticated()
              )
             .sessionManagement(sessionManager ->
@@ -41,5 +47,19 @@ public class SecurituConfig {
             .authenticationProvider(authProvider)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
+    }
+
+    @Bean
+    public WebMvcConfigurer CORSConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://127.0.0.1:5500") 
+                        .allowedMethods("GET", "POST", "PUT", "DELETE") 
+                        .allowedHeaders("*") 
+                        .allowCredentials(true); 
+            }
+        };
     }
 }

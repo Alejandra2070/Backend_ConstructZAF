@@ -1,0 +1,330 @@
+@font-face {
+    font-family: bold;
+    src: url(/fuentes/PTSans-Bold.ttf);
+}
+@font-face {
+    font-family: regular;
+    src: url(/fuentes/PTSans-Regular.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+}
+
+/*Menu lateral */
+
+.lateral{
+    font-family: regular;
+    width: 220px;
+    background-color: #17324D;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+.lateral h2{
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: bold;
+}
+
+.lateral ul{
+    list-style: none;
+}
+
+.lateral ul li{
+    padding: 15px 25px;
+    cursor: pointer;
+}
+
+.lateral ul li a{
+    text-decoration: none;
+    color: white;
+    margin-left: 2vw;
+}
+
+li img{
+    width: 1.5vw;
+    height: 1.5vw;
+    margin-left: 1vw;
+}
+
+.lateral ul li.active,
+.lateral ul li:hover{
+    background-color: #385879;
+    border-left: 4px solid #F5BA49;
+    height: 8vh;
+}
+
+/* Boton hamburguesa*/
+
+.hamburger{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    cursor: pointer;
+}
+
+.hamburger span{
+    height: 4px;
+    background-color: #17324D;
+    border-radius: 2px;
+}
+
+/*Contenido inicio */
+.content{
+    margin-left: 17vw;
+    margin-top: 1vw;
+    color: #17324D;
+}
+
+.superior{
+    display: flex;
+    width: 80vw;
+    justify-content: space-between;
+}
+
+#tituloSuper{
+    font-family: bold;
+}
+
+.superior img{
+    width: 1.3vw;
+}
+
+img#user{
+    margin-right: 5px;
+}
+
+p{
+    font-family: regular;
+}
+
+h3{
+    font-family: bold;
+}
+
+a{
+    text-decoration: none;
+    color: #17324D;
+}
+.dashboard{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card{
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 15vw;
+    text-align: center;
+}
+
+#image{
+    width: 10vw;
+}
+
+.card h3{
+    margin-bottom: 15px;
+    color: #1f2f46;
+}
+
+.card button{
+    margin-top: 2px;
+    padding: 10px;
+    background-color: #F5BA49;
+    border: none;
+    border-radius: 6px;
+    color: #17324D;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.card button:hover{
+    background-color: #da991f;
+}
+
+/*popup detalles*/
+
+.popup{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);/*Color de fondo cuando aparezca el popup*/
+}
+.popup-contenido{
+    background: #e1e3e6;
+    padding: 25px;
+    width: 18vw;
+    margin: 10% auto;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+}
+.cerrar{
+    position: absolute;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.btn-edit{
+    color: #17324D;
+    background-color: #f8b231;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: regular;
+}
+.popup-contenido {
+    display: block;
+    margin-bottom: 5px;
+    color: #17324D;
+    font-family: regular;
+}
+.popup-contenido .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.popup-contenido .form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.popup-contenido .form-group:last-child {
+    margin-right: 0;
+}
+
+.popup-contenido .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #17324D;
+    font-family: regular;
+}
+
+.popup-contenido .form-group input,
+.popup-contenido .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #17324D;
+}
+
+.popup-contenido .form-group input:focus,
+.popup-contenido .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/*popup reservas*/
+
+.popups{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);/*Color de fondo cuando aparezca el popup*/
+}
+
+.popups-contenido{
+    background: #e1e3e6;
+    padding: 25px;
+    width: 18vw;
+    margin: 15% auto;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+}
+.cerrars{
+    position: absolute;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.btn-edit{
+    color: #17324D;
+    background-color: #f8b231;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: regular;
+}
+.popups-contenido {
+    display: block;
+    margin-bottom: 5px;
+    color: #17324D;
+    font-family: regular;
+}
+.popups-contenido .forms-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.popups-contenido .form-groups {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.popups-contenido .form-groups:last-child {
+    margin-right: 0;
+}
+
+.popups-contenido .form-groups label {
+    display: block;
+    margin-bottom: 5px;
+    color: #17324D;
+    font-family: regular;
+}
+
+.popups-contenido .forms-group input,
+.popups-contenido .forms-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #17324D;
+}
+
+.popups-contenido .forms-group input:focus,
+.popups-contenido .forms-group select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+input#id-editar{
+    border-radius: 5px;
+    width: 10vw;
+}
