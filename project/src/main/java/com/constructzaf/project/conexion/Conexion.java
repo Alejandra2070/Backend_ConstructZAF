@@ -13,4 +13,3 @@ public class Conexion {
         return "index"; // Se refiere a index.html en la carpeta templates
     }
 }
-
