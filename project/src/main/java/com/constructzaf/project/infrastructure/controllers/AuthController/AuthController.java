@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.constructzaf.project.domain.Login;
 import com.constructzaf.project.domain.RegistroRequest;
 import com.constructzaf.project.domain.Token;
-
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:8080", "http://127.0.0.1:5500"})
 @RequestMapping("/auth")
+@CrossOrigin
 @RequiredArgsConstructor
 public class AuthController {
 

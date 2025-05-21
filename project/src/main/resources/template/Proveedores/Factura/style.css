@@ -2,7 +2,6 @@
     font-family: bold;
     src: url(/fuentes/PTSans-Bold.ttf);
 }
-
 @font-face {
     font-family: regular;
     src: url(/fuentes/PTSans-Regular.ttf);
@@ -23,7 +22,7 @@ body{
 
 .lateral{
     font-family: regular;
-    width: 220px;
+    width: 250px;
     background-color: #17324D;
     color: white;
     position: fixed;
@@ -89,7 +88,7 @@ li img{
 
 /*Contenido */
 
-.content-alqui{
+.content{
     margin-left: 17vw;
     margin-top: 1vw;
 }
@@ -109,7 +108,7 @@ img#user{
 
 /*Buscador*/
 
-img#busca-alqui{
+img#busca{
     height: 2vw;
     width: 2vw;
 }
@@ -118,61 +117,31 @@ img#busca-alqui{
     gap: 10px;
 }
 
-input.buscar-alqui{
+input.buscar{
     border-radius: 20px;
     padding: 6px 30px;
     color: #606F81;
 }
 
-.title-alqui{
-    font-family: bold;
+.title-usuarios{
     text-align: center;
     font-size: 24px;
     margin-top: 10px;
     color: #17324D;
-}
-
-h3{
     font-family: bold;
 }
 
-p{
-    font-family: regular;
-}
-
-/*Tarjetas de la informacion en general */
-.info-alqui{
-    display: grid;
-    gap: 20px;
-    margin-top: 20px;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    text-align: center;
-}
-
-.cards{
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-.cards h3{
-    margin-bottom: 15px;
-    color: #1f2f46;
-}
-
-/*Tabla de contenido*/
-.table-container-alqui{
+.table-container{
     width: 100%;
     padding: 20px;
 }
 
 table{
     font-family: regular;
-    width: 95%;
+    width: 100%;
     border-collapse: collapse;
     background-color: #F4F5FB;
+    
 }
 
 th,td{
@@ -181,7 +150,7 @@ th,td{
     border-bottom: 1px solid #ccc;
 }
 
-.btn-actions-alqui{
+.btn-actions{
     text-align: center;
     margin: 20px 0;
     display: flex;
@@ -189,9 +158,10 @@ th,td{
     gap: 15px;
 }
 
-.btn-edit-alqui,
-.btn-delete-alqui,
-.btn-crear-alqui{
+.btn-edit,
+.btn-delete,
+.btn-crear{
+    color: #17324D;
     background-color: #f8b231;
     border: none;
     padding: 8px 16px;
@@ -200,16 +170,29 @@ th,td{
     font-family: regular;
 }
 
-/*PopUp*/
+/*popup detalles*/
 
-h2#titulo{
-    color: #17324D;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1.5vw;
-    font-family: bold;
+#image{
+    width: 10vw;
 }
-.popupAlqui{
+#id{
+    width: 5vw;
+}
+#cuerpo{
+    background-color: white;
+    width: 15vw;
+    margin-top: 1vw;
+    display: flex;
+    flex-direction: row;
+    padding: 1vw;
+}
+#info{
+    text-align: left;
+}
+#mensaje{
+    text-align: right;
+}
+.popup{
     display: none;
     position: fixed;
     z-index: 10;
@@ -219,88 +202,70 @@ h2#titulo{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);/*Color de fondo cuando aparezca el popup*/
 }
-
-.alqui-conten{
+.popup-contenido{
     background: #e1e3e6;
     padding: 25px;
-    width: 410px;
+    width: 17.7vw;
     margin: 10% auto;
     border-radius: 15px;
     position: relative;
+    text-align: center;
 }
-.alqui-conten form input{
-    width: 30%;
-    padding: 5px;
-    margin: 6px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-.botonesAlqui{
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 2vw;
-}
-
-.btn-gris{
-    color: #17324D;
-    background-color: #f8b231;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-.btn-amarillo{
-    color: #17324D;
-    background-color: #f8b231;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 8px 25px;
-}
-
 .cerrar{
     position: absolute;
     right: 15px;
     font-size: 22px;
     cursor: pointer;
 }
-
-@media (max-width: 768px){
-    .lateral{
-        transform: translateX(-100%);
-    }
-
-    .lateral.open{
-        transform: translateX(0);
-    }
-
-    .hamburger{
-        display: flex;
-    }
-
-    .content{
-        margin-left: 0;
-        padding-top: 60px;
-    }
-
-    /*Tabla de contenido*/
-    .table-container-alqui{
-        max-width: 400px;
-        overflow-y: auto;
-        overflow-x: auto;
-    }
-
-    /*Cartas*/
-    .info-alqui{
-        grid-template-columns: repeat(2,1fr);
-    }
+.btn-edit{
+    color: #17324D;
+    background-color: #f8b231;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: regular;
+}
+.popup-contenido {
+    display: block;
+    margin-bottom: 5px;
+    color: #17324D;
+    font-family: regular;
+}
+.popup-contenido .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 480px) {
-    .info-alqui{
-        grid-template-columns: 1fr;
-    }
+.popup-contenido .form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.popup-contenido .form-group:last-child {
+    margin-right: 0;
+}
+
+.popup-contenido .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #17324D;
+    font-family: regular;
+}
+
+.popup-contenido .form-group input,
+.popup-contenido .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #17324D;
+}
+
+.popup-contenido .form-group input:focus,
+.popup-contenido .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
 }

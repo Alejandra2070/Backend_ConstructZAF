@@ -22,8 +22,13 @@ function login(){
     .then(data => {
         let token = data.token;
 
-        if(token) console.info('Login exitoso');
-        else console.error('Datos incorrectos');
+        if(token){
+            localStorage.setItem('token',token)
+            console.log("token guardado")
+        }else{
+            console.log("no se recibio token")
+        }
+        
         
         console.log(token);
 

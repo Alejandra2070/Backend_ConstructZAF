@@ -2,6 +2,7 @@ package com.constructzaf.project.infrastructure.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import com.constructzaf.project.application.service.LoginService;
 import com.constructzaf.project.domain.Login;
 
 @RestController
+@CrossOrigin
 @RequestMapping("construc/login")
 public class LoginController {
     

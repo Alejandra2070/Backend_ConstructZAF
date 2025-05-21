@@ -28,7 +28,7 @@ public class JwtService {
 
     private String getToken(Map<String,Object> extraClains, UserDetails user) {
 
-        extraClains.put("roles", user.getAuthorities().stream()
+        extraClains.put("authorities", user.getAuthorities().stream()
         .map(auth -> auth.getAuthority())
         .toList());
 

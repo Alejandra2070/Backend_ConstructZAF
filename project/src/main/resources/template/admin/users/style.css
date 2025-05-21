@@ -1,3 +1,12 @@
+@font-face {
+    font-family: bold;
+    src: url(/fuentes/PTSans-Bold.ttf);
+}
+@font-face {
+    font-family: regular;
+    src: url(/fuentes/PTSans-Regular.ttf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -12,6 +21,7 @@ body{
 /*Menu lateral */
 
 .lateral{
+    font-family: regular;
     width: 220px;
     background-color: #17324D;
     color: white;
@@ -25,6 +35,7 @@ body{
 .lateral h2{
     text-align: center;
     margin-bottom: 30px;
+    font-family: bold;
 }
 
 .lateral ul{
@@ -43,14 +54,16 @@ body{
 }
 
 li img{
-    width: 2vw;
-    height: 2vw;
+    width: 1.5vw;
+    height: 1.5vw;
+    margin-left: 1vw;
 }
 
 .lateral ul li.active,
 .lateral ul li:hover{
     background-color: #385879;
-    border-left: 4px solid #f8b231;
+    border-left: 4px solid #F5BA49;
+    height: 8vh;
 }
 
 /* Boton hamburguesa*/
@@ -61,7 +74,6 @@ li img{
     justify-content: space-between;
     width: 30px;
     height: 25px;
-    position: fixed;
     top: 15px;
     left: 15px;
     z-index: 1100;
@@ -74,38 +86,41 @@ li img{
     border-radius: 2px;
 }
 
+/*Contenido */
+
 .content{
     margin-left: 17vw;
     margin-top: 1vw;
 }
-
-/* Encabezado */
-.header-usuarios{
+.superior{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 80vw;
+    justify-content: space-between;
 }
 
-/*Barra de busqueda*/
-.search-bar{
+.superior img{
+    width: 1.3vw;
+}
+
+img#user{
+    margin-right: 5px;
+}
+
+/*Buscador*/
+
+img#busca{
+    height: 2vw;
+    width: 2vw;
+}
+.buscador{
     display: flex;
-    align-items: center;
     gap: 10px;
 }
 
-.search-bar input{
-    padding: 6px 10px;
+input.buscar{
     border-radius: 20px;
-    border: 1px solid #ccc;
-}
-
-.btn-add{
-    background-color: #f8b231;
-    border: none;
-    border-radius: 50%;
-    padding: 6px 10px;
-    cursor: pointer;
+    padding: 6px 30px;
+    color: #606F81;
 }
 
 .title-usuarios{
@@ -113,6 +128,7 @@ li img{
     font-size: 24px;
     margin-top: 10px;
     color: #17324D;
+    font-family: bold;
 }
 
 .table-container{
@@ -121,9 +137,11 @@ li img{
 }
 
 table{
+    font-family: regular;
     width: 100%;
     border-collapse: collapse;
     background-color: #F4F5FB;
+    
 }
 
 th,td{
@@ -141,13 +159,15 @@ th,td{
 }
 
 .btn-edit,
-.btn-delete{
+.btn-delete,
+.btn-crear{
+    color: #17324D;
     background-color: #f8b231;
     border: none;
     padding: 8px 16px;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
+    font-family: regular;
 }
 
 /*Popup*/
@@ -159,7 +179,23 @@ th,td{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);/*Color de fondo cuando aparezca el popup*/
+}
+
+h2#titulo{
+    font-family: bold;
+}
+.form-group-id{
+    font-family: regular;
+}
+input#id-editar{
+    border-radius: 5px;
+    width: 10vw;
+}
+
+input#id-eliminar{
+    border-radius: 5px;
+    width: 10vw;
 }
 .popup-contenido .form-row {
     display: flex;
@@ -179,7 +215,8 @@ th,td{
 .popup-contenido .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #17324D;
+    font-family: regular;
 }
 
 .popup-contenido .form-group input,
@@ -189,14 +226,22 @@ th,td{
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    color: #17324D;
 }
 
 .popup-contenido .form-group input:focus,
 .popup-contenido .form-group select:focus {
     border-color: #007bff;
     outline: none;
+    
 }
 
+h2#titulo{
+    color: #17324D;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5vw;
+}
 .popup-contenido h2 i {
     margin-right: 5px;
 }
@@ -221,21 +266,22 @@ th,td{
 .botones{
     margin-top: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2vw;
 }
 
-.btn-amarilo{
+.btn-amarillo{
+    color: #17324D;
     background-color: #f8b231;
-    color: white;
-    padding: 8px 16px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    padding: 8px 25px;
 }
 
 .btn-gris{
-    background-color: #ccc;
-    color: black;
+    color: #17324D;
+    background-color: #f8b231;
     padding: 8px 16px;
     border: none;
     border-radius: 8px;
@@ -265,5 +311,11 @@ th,td{
     .content{
         margin-left: 0;
         padding-top: 60px;
+    }
+
+    .table-container{
+        max-width: 400px;
+        overflow-y: auto;
+        overflow-x: auto;
     }
 }
