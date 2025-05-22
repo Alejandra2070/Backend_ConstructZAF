@@ -7,6 +7,8 @@ const hamburger = document.getElementById('hamburger');
 const token = localStorage.getItem('token');
 console.log('Token guardado:', token);
 
+// ------------------------------------------------------------------------
+// Obtener
 
 fetch('http://localhost:8080/construc/usuarios', {
 method: 'GET',
@@ -22,31 +24,169 @@ return res.json();
 .then(data => {
     console.log('Datos recibidos:', data);
     
-    let datos = document.getElementById("table-container")
+    let datos = document.getElementById("miTabla-user")
     datos.innerHTML = ``
 
     data.forEach(a => {
         datos.innerHTML+=`
-            <table>
-                <tbody>
-                    <tr>
-                        <td>${a.id_usuario}</td>
-                        <td>${a.nombre}</td>
-                        <td>${a.correo}</td>
-                        <td>${a.rol}</td>
-                        <td>${a.enabled}</td>
-                    </tr>
-                </tbody>
-        `
-    })
+            <tr>
+                <td>${a.id_usuario}</td>
+                <td>${a.nombre}</td>
+                <td>${a.apellido}</td>
+                <td>${a.cedula}</td>
+                <td>${a.telefono}</td>
+                <td>${a.correo}</td>
+                <td>${a.fecha_registro}</td>
+                <td>${a.rol}</td>
+            </tr>
+        `;
+    });
 })
 .catch(err => {
     console.error('Error:', err);
 });
 
+// --------------------------------------------------------------------------
+// Crear
 
+const formCrearUser = document.getElementById('form-crear-user');
 
+formCrearUser.addEventListener('submit', function(e){
+    e.preventDefault(); // Evita recarga de la pagina 
 
+    const nuevoUsuario = {
+        nombre: document.getElementById('nombre-crear').value,
+        contraseña: document.getElementById('contrasena-crear').value,
+        apellido: document.getElementById('apellido-crear').value,
+        correo: document.getElementById('correo-crear').value,
+        telefono: parseInt(document.getElementById('telefono-crear').value),
+        cedula: parseInt(document.getElementById('cedula-crear').value),
+        fecha_registro: document.getElementById('fecha-ingreso-crear').value
+    };
+
+    fetch('http://localhost:8080/auth/registro', {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(nuevoUsuario)
+    })
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Error al crear usuario');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Usuario creado exitosamente');
+        cerrarPopup('crearPopup');
+        formCrearUser.reset();
+        location.reload(); // Opcional: recargar la tabla
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('No se pudo crear el usuario');
+    });
+});
+
+// --------------------------------------------------------------------------------------------------
+// Eliminar
+
+const formEliminar = document.querySelector('#eliminarPopup form');
+
+formEliminar.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const id = document.getElementById('id-eliminar').value;
+
+    fetch('http://localhost:8080/construc/usuarios/${id}',{
+        method: 'DELETE',
+        headers:{
+            'Authorization': 'Bearer ' + token 
+        }
+    })
+    .then(() => {
+        if (!res.ok) throw new Error('Error al eliminar usuario');
+        return res.text();
+    })
+    .then(() => {
+        alert('Usuario eliminado correctamente');
+        cerrarPopup('eliminarPopup');
+        formEliminar.reset();
+        location.reload();
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert('No se pudo eliminar el usuario');
+    });
+});
+// ---------------------------------------------------------------------------------------------------
+// Editar
+
+const formEditar = document.querySelector('#editarPopup form');
+
+formEditar.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const id = document.getElementById('id-editar').value;
+
+    const datosActualizados= {
+        nombre: document.getElementById('nombre-editar').value,
+        apellido: document.getElementById('apellido-editarr').value,
+        correo: document.getElementById('correo-editar').value,
+        telefono: parseInt(document.getElementById('telefono-editar').value)
+    };
+
+    fetch('http://localhost:8080/construc/usuarios/${id}',{
+        method: 'PUT',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token 
+        },
+        body: JSON.stringify(datosActualizados)
+    })
+    .then(() => {
+        if (!res.ok) throw new Error('Error al actualizar usuario');
+        return res.json();
+    })
+    .then(() => {
+        alert('Usuario actualizado correctamente');
+        cerrarPopup('editarPopup');
+        formEditar.reset();
+        location.reload();
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert('No se pudo actualizar el usuario');
+    });
+});
+
+// ---------------------------------------------------------------------------------------------------
+// Filtar 
+
+function searchUser(){
+    const input = document.getElementById("search-item");
+    const filter = input.value.toLowerCase();// pasa el texto del usuario a minuscula
+    const table = document.getElementById("miTabla");// Obtiene la tabla HTML
+    const trs = table.getElementsByTagName("tr");// Obtiene todas las filas de la tabla
+
+    for(let i=1; i < trs.length; i++){
+        const row = trs[i];
+        const tds = row.getElementsByTagName("td");// Contiene las celdas de la fila actual
+        let showRow = false;// booleano si se debe mostrar la fila
+
+        for (let j=0; j < tds.length; j++){// for para cada celda de la fila
+            const cell = tds[j];
+            if(cell && cell.textContent.toLowerCase().includes(filter)){
+                showRow = true;// Si el texto de la celda contiene lo que el usuario busco, se muestra
+                break;// finalizar bucle
+            }
+        }
+
+        row.style.display = showRow ? "" : "none";// se aculta la tabla si no coincide con lo que el usuario busco
+    }
+}
 
 // Activar item seleccionado
 
