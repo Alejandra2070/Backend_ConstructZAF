@@ -2,6 +2,73 @@ const items = document.querySelectorAll('#menu li');
 const late = document.getElementById('lateral');
 const hamburger = document.getElementById('hamburger');
 
+const token = localStorage.getItem('token');
+console.log('Token guardado:', token);
+
+fetch('http://localhost:8080/construc/herramientas', {
+method: 'GET',
+headers: {
+    'Authorization': 'Bearer ' + token,
+    'Content-Type': 'application/json'
+}})
+
+.then(res => {
+if (!res.ok) throw new Error('No autorizado o error en la petición');
+return res.json();
+})
+.then(data => {
+    console.log('Datos recibidos:', data);
+    
+    let datos = document.getElementById("dashboard")
+    
+    datos.innerHTML = ``
+
+    data.forEach(a => {
+        datos.innerHTML+=`
+            <div id="card">
+                <img id="image" src="${a.imagen}" alt="">
+                <h3>${a.nombre}</h3>
+                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
+            </div>
+        `
+    })
+
+})
+
+let dataHerramientas = data;
+
+function mostrarDetalles(id){
+    const herramienta = dataHerramientas.find(item => item.id === id);
+
+    if (herramienta){
+        console.log("Holaaaaaaaaaaaaaaaaa");
+        
+        const detalless = document.getElementById("detallesPopup");
+        detalless.innerHTML = `
+            <div class="popup-contenido">
+            <h3>${a.nombre}</h3><br>
+            <img id="image" src="${a.imagen}" alt="">
+            <h3>${a.descripcion}</h3>
+            <h3>Precio:  ${a.precio}</h3>
+            <h3>Estado:  ${a.estado}</h3><br>
+        </div>
+        <button onclick="abrirPopup('reservaPopup'); cerrarPopup('detallesPopup')" class="btn-edit">Reservar</button>
+        `;
+        abrirPopup('detallesPopup')
+    }
+}
+
+/*.then(detalles => {
+    console.log('Datos:', detalles);
+    
+    let details = document.getElementsByClassName("popup")
+    details.innerHTML = ``
+
+    detalles.forEach(e => {
+        
+    })
+})*/
+
 // Activar item seleccionado
 
 items.forEach(item => {

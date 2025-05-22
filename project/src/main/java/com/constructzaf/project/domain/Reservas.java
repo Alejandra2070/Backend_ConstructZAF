@@ -2,7 +2,12 @@ package com.constructzaf.project.domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,8 +21,39 @@ public class Reservas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_reserva;
 
+    public String getNombreHerramienta() {
+        return nombreHerramienta;
+    }
+
+    public void setNombreHerramienta(String nombreHerramienta) {
+        this.nombreHerramienta = nombreHerramienta;
+    }
+
+    private String nombreHerramienta;
+    private String nombreUsuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    private boolean confirmacion;
+
+    public boolean isConfirmacion() {
+        return confirmacion;
+    }
+
+    public void setConfirmacion(boolean confirmacion) {
+        this.confirmacion = confirmacion;
+    }
+
     private LocalDate fecha_reserva;
-    private enum estado_devolucion{pendiente, activa, finalizada, cancelada};
+
+    @Enumerated(EnumType.STRING)
+    EstadoR estado_devolucion;
+    
     private Long deposito;
     private LocalDate fecha_expiracion;
 
@@ -32,10 +68,15 @@ public class Reservas {
     public Reservas() {
     }
 
-    public Reservas(Long id_reserva, LocalDate fecha_reserva, Long deposito, LocalDate fecha_expiracion,
+    public Reservas(Long id_reserva, String nombreHerramienta, String nombreUsuario, boolean confirmacion,
+            LocalDate fecha_reserva, EstadoR estado_devolucion, Long deposito, LocalDate fecha_expiracion,
             Herramientas herramienta, Usuarios usuario) {
         this.id_reserva = id_reserva;
+        this.nombreHerramienta = nombreHerramienta;
+        this.nombreUsuario = nombreUsuario;
+        this.confirmacion = confirmacion;
         this.fecha_reserva = fecha_reserva;
+        this.estado_devolucion = estado_devolucion;
         this.deposito = deposito;
         this.fecha_expiracion = fecha_expiracion;
         this.herramienta = herramienta;
