@@ -5,8 +5,8 @@ const boton = document.getElementById("botonI").addEventListener("click", login)
 
 function login(){
 
-    let nombre = document.getElementById("inpuuut1");
-    let contrasena = document.getElementById("inpuuut2");
+    //let nombre = document.getElementById("inpuuut1");
+    //let contrasena = document.getElementById("inpuuut2");
 
     var url = 'http://localhost:8080/auth/login';
 
@@ -14,8 +14,10 @@ function login(){
         username: 'franco',
         password: 'franco123'
         /*
-        username: nombre.value,
-        password: contrasena.value*/
+        username: 'franco',
+        password: 'franco123'
+        //username: nombre.value,
+        //password: contrasena.value*/
     };
 
     var options = {

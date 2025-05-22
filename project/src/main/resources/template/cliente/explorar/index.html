@@ -30,62 +30,13 @@
             <h1 id="tituloSuper">Catálogo</h1>
             <p><img src="/imagenes/usuario (1).png" id="user"> Cliente</p>
         </div> 
-        <div class="dashboard">
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-            <div class="card">
-                <img id="image" src="/imagenes/Mezcladora.png" alt="">
-                <h3>Mezcladora de concreto</h3>
-                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
-            </div>
-        </div>
+        <div id="dashboard"></div>
     </div>
 
     <!-- PopUp ver detalles -->
     <div class="popup" id="detallesPopup">
+        <span class="cerrar" onclick="cerrarPopup('detallesPopup')">&times;</span>
         <div class="popup-contenido">
-            <span class="cerrar" onclick="cerrarPopup('detallesPopup')">&times;</span>
-            <h3>Mezcladora de concreto</h3><br>
-            <img id="image" src="/imagenes/Mezcladora.png" alt="">
-            <h3>Breve descripción</h3>
-            <h3>Precio:  $60.000</h3>
-            <h3>Cantidad:  4</h3>
-            <h3>Estado:  Disponible</h3><br>
-            <button onclick="abrirPopup('reservaPopup'); cerrarPopup('detallesPopup')" class="btn-edit">Reservar</button>
-
         </div>
     </div>
 
