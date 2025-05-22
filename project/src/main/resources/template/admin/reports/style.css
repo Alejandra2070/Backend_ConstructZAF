@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: regular;
-    src: url(/fuentes/PTSans-Regular.ttf);
+    src: url(../../fuentes/PTSans-Regular.ttf);
 }
 
 *{

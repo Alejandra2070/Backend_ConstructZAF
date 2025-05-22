@@ -1,10 +1,10 @@
 @font-face {
     font-family: bold;
-    src: url(/fuentes/PTSans-Bold.ttf);
+    src: url(../../fuentes/PTSans-Bold.ttf);
 }
 @font-face {
     font-family: regular;
-    src: url(/fuentes/PTSans-Regular.ttf);
+    src: url(../../fuentes/PTSans-Regular.ttf);
 }
 *{
     margin: 0;

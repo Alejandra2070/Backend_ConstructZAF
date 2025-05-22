@@ -38,7 +38,6 @@ public class SecurituConfig {
             .authorizeHttpRequests(authRequest ->
              authRequest
              .requestMatchers("/auth/**").permitAll()
-             .requestMatchers("/construc/alquiler/**").hasAnyAuthority("ADMIN", "USER", "PROVEEDOR")
              .anyRequest().authenticated()
              )
             .sessionManagement(sessionManager ->
