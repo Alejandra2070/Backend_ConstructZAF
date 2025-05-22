@@ -91,7 +91,7 @@ formCrearUser.addEventListener('submit', function(e){
 });
 
 // --------------------------------------------------------------------------------------------------
-// Eliminar
+// Eliminar 
 
 const formEliminar = document.querySelector('#eliminarPopup form');
 
@@ -100,13 +100,13 @@ formEliminar.addEventListener('submit', function(e){
 
     const id = document.getElementById('id-eliminar').value;
 
-    fetch('http://localhost:8080/construc/usuarios/${id}',{
+    fetch(`http://localhost:8080/construc/usuarios/${id}`,{
         method: 'DELETE',
         headers:{
             'Authorization': 'Bearer ' + token 
         }
     })
-    .then(() => {
+    .then( res => {
         if (!res.ok) throw new Error('Error al eliminar usuario');
         return res.text();
     })
@@ -130,24 +130,25 @@ formEditar.addEventListener('submit', function(e){
     e.preventDefault();
 
     const id = document.getElementById('id-editar').value;
+    console.log(id);
 
     const datosActualizados= {
         nombre: document.getElementById('nombre-editar').value,
-        apellido: document.getElementById('apellido-editarr').value,
+        apellido: document.getElementById('apellido-editar').value,
         correo: document.getElementById('correo-editar').value,
         telefono: parseInt(document.getElementById('telefono-editar').value)
     };
 
-    fetch('http://localhost:8080/construc/usuarios/${id}',{
-        method: 'PUT',
+    fetch(`http://localhost:8080/construc/usuarios/${id}`,{
+        method: 'PATCH',
         headers:{
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token 
         },
         body: JSON.stringify(datosActualizados)
     })
-    .then(() => {
-        if (!res.ok) throw new Error('Error al actualizar usuario');
+    .then( res => {
+        if(!res.ok) throw new Error('Error al actualizar usuario');
         return res.json();
     })
     .then(() => {

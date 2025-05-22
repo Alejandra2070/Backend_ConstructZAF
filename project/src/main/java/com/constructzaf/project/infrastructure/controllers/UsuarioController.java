@@ -40,13 +40,15 @@ public class UsuarioController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Usuarios> actualizarUsuario(@PathVariable Long id,Usuarios usuarios){
-        return ResponseEntity.ok().body(usuariosService.actualizarUsuario(id, usuarios));
+    public ResponseEntity<Usuarios> actualizarUsuario(@PathVariable Long id, @RequestBody Usuarios usuarios){
+        Usuarios actualizado = usuariosService.actualizarUsuario(id, usuarios);
+        return ResponseEntity.ok(actualizado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Usuarios> eliminarUsuario(@PathVariable Long id){
-        return ResponseEntity.ok().body(usuariosService.eliminarUsuario(id));
+        Usuarios eliminado = usuariosService.eliminarUsuario(id);
+        return ResponseEntity.ok(eliminado);
     }
 
 }
