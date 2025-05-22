@@ -154,7 +154,7 @@ input.buscar{
     font-family: regular;
 }
 
-.dashboard{
+#dashboard{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -162,7 +162,7 @@ input.buscar{
     text-align: center;
 }
 
-.card{
+#card{
     background-color: #FFFFFF;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -170,12 +170,12 @@ input.buscar{
     width: 20vw;
 }
 
-.card h3{
+#card h3{
     margin-bottom: 15px;
     color: #1f2f46;
 }
 
-.card button{
+#card button{
     margin-top: 15px;
     padding: 10px;
     background-color: #F5BA49;
@@ -187,7 +187,7 @@ input.buscar{
     transition: background 0.3s;
 }
 
-.card button:hover{
+#card button:hover{
     background-color: #da991f;
 }
 #image{

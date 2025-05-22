@@ -2,6 +2,50 @@ const items = document.querySelectorAll('#menu li');
 const late = document.getElementById('lateral');
 const hamburger = document.getElementById('hamburger');
 
+const token = localStorage.getItem('token');
+console.log('Token guardado:', token);
+
+fetch('http://localhost:8080/construc/reserva', {
+method: 'GET',
+headers: {
+    'Authorization': 'Bearer ' + token,
+    'Content-Type': 'application/json'
+}})
+
+.then(res => {
+if (!res.ok) throw new Error('No autorizado o error en la petición');
+return res.json();
+})
+.then(data => {
+    console.log('Datos recibidos:', data);
+    
+    let datos = document.getElementById("miTabla-reservas")
+    
+    datos.innerHTML = ``
+
+    data.forEach(a => {
+        datos.innerHTML+=`
+            <tr>
+                <td>${a.id_reserva}</td>
+                <td>${a.nombreHerramienta}</td>
+                <td>${a.nombreUsuario}</td>
+                <td>${a.fecha_reserva}</td>
+                <td>${a.fecha_expiracion}</td>
+                <td>${a.deposito}</td>
+                <td>
+                    <button>
+                        <img id="confirmar" src="/imagenes/confirmar.png" alt="">
+                    </button>
+                    <button>
+                        <img id="confirmar" src="/imagenes/denegar.png" alt="">
+                    </button>
+                </td>
+            </tr>
+        `
+    })
+
+})
+
 // Activar item seleccionado
 
 items.forEach(item => {

@@ -37,9 +37,9 @@
 
         <h2 class="title-usuarios">Solicitudes de alquiler</h2>
         <div class="dashboard">
-            <!-- tabla de informacion de todos los users -->
+            <!-- tabla de informacion de todos las reservas -->
             <div class="table-container">
-                <table id="miTabla">
+                <table>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -47,10 +47,12 @@
                             <th>Usuario</th>
                             <th>Fecha Reserva</th>
                             <th>Fecha Entrega</th>
+                            <th>Depósito</th>
                             <th>Confirmación</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="miTabla-reservas">
+                        <!--
                         <tr>
                             <td>01</td>
                             <td>Taladro</td>
@@ -81,6 +83,7 @@
                                 </button>
                             </td>
                         </tr>
+                        -->
                     </tbody>
                 </table>
                 <div class="btn-actions">

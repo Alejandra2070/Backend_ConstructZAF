@@ -35,7 +35,9 @@ public class Usuarios implements UserDetails{
     private Long telefono;
     private Long cedula;
     
+    @Enumerated(EnumType.STRING)
     Role rol;
+    
     private LocalDate fecha_registro;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)

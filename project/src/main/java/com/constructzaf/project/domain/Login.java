@@ -1,6 +1,8 @@
 package com.constructzaf.project.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,7 +16,9 @@ public class Login {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_login;
 
-    private enum rol{Administrador, Proveedor, Cliente};
+    @Enumerated(EnumType.STRING)
+    Role rol;
+    
     private String username;
     private String password;
 
