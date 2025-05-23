@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.constructzaf.project.application.service.HerramientaService;
 import com.constructzaf.project.domain.Herramientas;
-import jakarta.validation.Valid;
+import com.constructzaf.project.exception.ResourceNotFoundException;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@CrossOrigin
 @RequestMapping("construc/herramientas")
 public class HerramientasController {
     @Autowired
@@ -41,11 +40,11 @@ public class HerramientasController {
         if (herramientaView.isPresent()) {
             return ResponseEntity.ok(herramientaView.get());
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        throw new ResourceNotFoundException("herramienta no esta registrada: " + id);
     }
     
     @PostMapping
-    public ResponseEntity<Herramientas> createHerramienta(@RequestBody Herramientas herramienta)  {
+    public ResponseEntity<Herramientas> createHerramienta(@Valid @RequestBody Herramientas herramienta)  {
         Herramientas save = HerramientasService.crearHerramienta(herramienta);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(save);
@@ -58,14 +57,11 @@ public class HerramientasController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody Herramientas herramienta, BindingResult result, @PathVariable Long id) {
-        if (result.hasFieldErrors()) {
-            return ResponseEntity.badRequest().body("el usuario no existe");
-        }
         Optional<Herramientas> productOptional = HerramientasService.update(id, herramienta);
         if (productOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(productOptional.orElseThrow());
         }
-        return ResponseEntity.notFound().build();
+        throw new ResourceNotFoundException("herramienta no encontrada: " + id);
     }
 
 }
