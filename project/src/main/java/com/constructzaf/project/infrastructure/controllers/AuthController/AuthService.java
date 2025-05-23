@@ -54,7 +54,7 @@ public class AuthService {
         .telefono(request.getTelefono())
         .cedula(request.getCedula())
         .fecha_registro(request.getFecha_registro())
-        .rol(Role.USER)
+        .rol(request.getRole())
         .build();
 
         usuarioRepository.save(user);

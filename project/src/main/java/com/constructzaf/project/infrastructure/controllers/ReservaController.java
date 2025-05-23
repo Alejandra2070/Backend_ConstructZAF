@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.constructzaf.project.application.service.ReservasService;
 import com.constructzaf.project.domain.Reservas;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin
 @RequestMapping("construc/reserva")
@@ -32,7 +34,7 @@ public class ReservaController {
     }
 
     @PostMapping
-    public ResponseEntity<Reservas> crearReserva(@RequestBody Reservas reserva){
+    public ResponseEntity<Reservas> crearReserva(@Valid @RequestBody Reservas reserva){
         Reservas save = reservasService.crearReservas(reserva);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(save);

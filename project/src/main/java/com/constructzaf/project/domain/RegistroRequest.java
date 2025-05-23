@@ -19,5 +19,6 @@ public class RegistroRequest {
     private Long telefono;
     private Long cedula;
     private LocalDate fecha_registro;
+    Role role;
     
 }

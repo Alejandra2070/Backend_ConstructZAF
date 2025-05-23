@@ -28,15 +28,15 @@ return res.json();
             <div id="card">
                 <img id="image" src="${a.imagen}" alt="">
                 <h3>${a.nombre}</h3>
-                <button onclick='abrirPopup(${JSON.stringify(a)})' class="btn-edit">Ver detalles</button>
+                <button onclick="abrirPopup('detallesPopup')" class="btn-edit">Ver detalles</button>
             </div>
-        `;
+        `
     })
+
 })
 
-/*
 let dataHerramientas = data;
-        
+
 function mostrarDetalles(id){
     const herramienta = dataHerramientas.find(item => item.id === id);
 
@@ -51,13 +51,12 @@ function mostrarDetalles(id){
             <h3>${a.descripcion}</h3>
             <h3>Precio:  ${a.precio}</h3>
             <h3>Estado:  ${a.estado}</h3><br>
-            
         </div>
+        <button onclick="abrirPopup('reservaPopup'); cerrarPopup('detallesPopup')" class="btn-edit">Reservar</button>
         `;
         abrirPopup('detallesPopup')
     }
 }
-*/
 
 /*.then(detalles => {
     console.log('Datos:', detalles);
@@ -101,21 +100,8 @@ hamburger.addEventListener('click', () => {
 
 // Mostrar o ocultar los popUp
 
-function abrirPopup(herramienta){
-
-    const popup = document.getElementById("detallesPopup");
-    const contenido = popup.querySelector(".popup-contenido");
-
-    contenido.innerHTML =`
-        <h3>${herramienta.nombre}</h3><br>
-        <img id="image" src="${herramienta.imagen}" alt="">
-        <h3>${herramienta.descripcion}</h3>
-        <h3>Precio:  ${herramienta.precio}</h3>
-        <h3>Estado:  ${herramienta.estado}</h3><br>
-        <button onclick="abrirPopup('reservaPopup'); cerrarPopup('detallesPopup')" class="btn-edit">Reservar</button>
-    `;
-
-    popup.style.display = "flex";
+function abrirPopup(id){
+    document.getElementById(id).style.display = 'block';
 }
 
 function cerrarPopup(id){

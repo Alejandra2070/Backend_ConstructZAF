@@ -26,8 +26,6 @@ return res.json();
     data.forEach(a => {
         datos.innerHTML+=`
             <div id="card">
-                <img id="image" src="${a.imagen}" alt="">
-                <h3>${a.nombreHerramienta}</h3>
                 <h3>${a.fecha_reserva}</h3>
                 <h3>${a.estado_devolucion}</h3>
                 <h3>${a.deposito}</h3>
@@ -37,7 +35,7 @@ return res.json();
     })
 
 })
-console.log('Reservas');
+
 // Activar item seleccionado
 
 items.forEach(item => {
