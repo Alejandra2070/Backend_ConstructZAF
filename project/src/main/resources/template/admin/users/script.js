@@ -61,7 +61,8 @@ formCrearUser.addEventListener('submit', function(e){
         correo: document.getElementById('correo-crear').value,
         telefono: parseInt(document.getElementById('telefono-crear').value),
         cedula: parseInt(document.getElementById('cedula-crear').value),
-        fecha_registro: document.getElementById('fecha-ingreso-crear').value
+        fecha_registro: document.getElementById('fecha-ingreso-crear').value,
+        role: document.getElementById('rol-crear').value
     };
 
     fetch('http://localhost:8080/auth/registro', {
