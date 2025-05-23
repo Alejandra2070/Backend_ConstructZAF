@@ -26,25 +26,24 @@ public class Herramientas {
     private String imagen;
     private Long precio;
 
-    @ManyToOne
-    @JoinColumn(name = "inventario_id")
-    private Inventario inventario;
-
     @OneToMany(mappedBy = "herramienta", cascade = CascadeType.ALL)
     private List<Reservas> reserva;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pago")
+    private Pagos pagos;
 
     public Herramientas() {
     }
 
     public Herramientas(Long id_herramienta, String nombre, String descripcion, String estado, String imagen,
-            Long precio, Inventario inventario, List<Reservas> reserva) {
+            Long precio, List<Reservas> reserva) {
         this.id_herramienta = id_herramienta;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
         this.imagen = imagen;
         this.precio = precio;
-        this.inventario = inventario;
         this.reserva = reserva;
     }
 
@@ -94,14 +93,6 @@ public class Herramientas {
 
     public void setPrecio(Long precio) {
         this.precio = precio;
-    }
-
-    public Inventario getInventario() {
-        return inventario;
-    }
-
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
     }
 
     public List<Reservas> getReserva() {
