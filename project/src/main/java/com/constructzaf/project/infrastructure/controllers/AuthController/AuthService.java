@@ -1,7 +1,11 @@
 package com.constructzaf.project.infrastructure.controllers.AuthController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,8 +34,14 @@ public class AuthService {
 
         UserDetails user = usuarioRepository.findByNombre(login.getUsername()).orElseThrow();
         String token = jwtService.getToken(user);
+
+        List<String> roles = user.getAuthorities().stream()
+            .map(GrantedAuthority::getAuthority)
+            .collect(Collectors.toList());
+
         return Token.builder()
             .token(token)
+            .roles(roles)
             .build();
     }
 
