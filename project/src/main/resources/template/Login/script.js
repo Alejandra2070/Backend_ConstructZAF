@@ -5,8 +5,8 @@ const boton = document.getElementById("botonI").addEventListener("click", login)
 
 function login(){
 
-    //let nombre = document.getElementById("inpuuut1");
-    //let contrasena = document.getElementById("inpuuut2");
+    let nombre = document.getElementById("inpuuut1");
+    let contrasena = document.getElementById("inpuuut2");
 
     var url = 'http://localhost:8080/auth/login';
 
@@ -14,10 +14,8 @@ function login(){
         username: 'franco',
         password: 'franco123'
         /*
-        username: 'franco',
-        password: 'franco123'
-        //username: nombre.value,
-        //password: contrasena.value*/
+        username: nombre.value,
+        password: contrasena.value*/
     };
 
     var options = {
@@ -42,6 +40,6 @@ function login(){
         console.log(token);
         
         //para que me redirija al otro archivo
-        window.location.href = "http://127.0.0.1:5500/project/src/main/resources/template/admin/home/index.html";
+        window.location.href = "http://127.0.0.1:5500/project/src/main/resources/template/cliente/explorar/index.html";
     })
 }
