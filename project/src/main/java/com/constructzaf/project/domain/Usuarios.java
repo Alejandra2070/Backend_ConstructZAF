@@ -50,9 +50,6 @@ public class Usuarios implements UserDetails{
     private Reporte reportes;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Reservas> reserva;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Factura> factura;
 
     public Usuarios() {
@@ -60,7 +57,7 @@ public class Usuarios implements UserDetails{
 
     public Usuarios(Long id_usuario, String nombre, String contraseña, String apellido, String correo, Long telefono,
             Long cedula, Role rol, LocalDate fecha_registro, List<Alquiler> alquiler, Login login, Reporte reportes,
-            List<Reservas> reserva, List<Factura> factura) {
+            List<Factura> factura) {
         this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -73,7 +70,6 @@ public class Usuarios implements UserDetails{
         this.alquiler = alquiler;
         this.login = login;
         this.reportes = reportes;
-        this.reserva = reserva;
         this.factura = factura;
     }
 
@@ -163,14 +159,6 @@ public class Usuarios implements UserDetails{
 
     public void setReportes(Reporte reportes) {
         this.reportes = reportes;
-    }
-
-    public List<Reservas> getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(List<Reservas> reserva) {
-        this.reserva = reserva;
     }
 
     public List<Factura> getFactura() {
