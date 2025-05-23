@@ -21,7 +21,7 @@ public class Alquiler {
     private Long precio_total;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
+    @JoinColumn(name = "usuario_id")
     private Usuarios usuario;
 
     public Alquiler() {
