@@ -11,15 +11,15 @@ console.log('Token guardado:', token);
 // Obtener
 
 fetch('http://localhost:8080/construc/usuarios', {
-method: 'GET',
-headers: {
-    'Authorization': 'Bearer ' + token,
-    'Content-Type': 'application/json'
-}
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+    }
 })
 .then(res => {
-if (!res.ok) throw new Error('No autorizado o error en la petición');
-return res.json();
+    if (!res.ok) throw new Error('No autorizado o error en la petición');
+    return res.json();
 })
 .then(data => {
     console.log('Datos recibidos:', data);
