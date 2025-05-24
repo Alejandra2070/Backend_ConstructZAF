@@ -16,6 +16,8 @@ headers: {
 if (!res.ok) throw new Error('No autorizado o error en la petición');
 return res.json();
 })
+
+//mostrar datos en las tarjetas
 .then(data => {
     console.log('Datos recibidos:', data);
     

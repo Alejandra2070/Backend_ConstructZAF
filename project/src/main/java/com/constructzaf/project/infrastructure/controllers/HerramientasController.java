@@ -14,6 +14,8 @@ import com.constructzaf.project.domain.Herramientas;
 import com.constructzaf.project.exception.ResourceNotFoundException;
 
 import jakarta.validation.Valid;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,12 +25,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("construc/herramientas")
 public class HerramientasController {
     @Autowired
     private HerramientaService HerramientasService;
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER') or hasAuthority('PROVEEDOR')")
+    
     @GetMapping
     public List<Herramientas> list(){
         return HerramientasService.findAll();

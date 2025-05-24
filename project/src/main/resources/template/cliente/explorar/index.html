@@ -20,15 +20,15 @@
     <div id="lateral" class="lateral">
         <h2>CONSTRUCT <br> ZAF</h2>
         <ul id="menu">
-            <li class="active"><img src="/imagenes/hogar.png"><a href="../explorar/index.html">Explorar</a></li>
-            <li><img src="/imagenes/perfil.png"><a href="../reservas/index.html">Reservas</a></li>
+            <li class="active"><img src="../../imagenes/hogar.png"><a href="../explorar/index.html">Explorar</a></li>
+            <li><img src="../../imagenes/perfil.png"><a href="../reservas/index.html">Reservas</a></li>
         </ul>
     </div>
 
     <div class="content">
         <div class="superior">
             <h1 id="tituloSuper">Catálogo</h1>
-            <p><img src="/imagenes/usuario (1).png" id="user"> Cliente</p>
+            <p><img src="../../imagenes/usuario (1).png" id="user"> Cliente</p>
         </div> 
         <div id="dashboard"></div>
     </div>
@@ -45,23 +45,37 @@
         <div class="popups-contenido">
             <span class="cerrars" onclick="cerrarPopup('reservaPopup')">&times;</span>
             <h3>Reservación</h3><br>
-            <form>
-                <div class="forms-row">
-                    <div class="form-groups-id">
-                        <label for="id">Fecha de reservación</label>
-                        <input type="date" id="id-editar" placeholder="ID">
-                    </div>
-                </div>
-                <div class="forms-row">
-                    <div class="form-groups">
-                        <label for="nombre">Fecha de entrega</label>
-                        <input type="date" id="nombre-editar" placeholder="Nombre">
-                    </div>
-                </div>
-                <div class="forms-row">
+            <form id="form-crear-reserva"></form>
+                <div class="form-row">
                     <div class="form-group">
-                        <label for="apellido">Cantidad a reservar</label>
-                        <input type="text" id="apellido-editar">
+                        <label for="username">Nombre de Herramienta</label>
+                        <input type="text" id="nombre-herramienta" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Nombre de Usuario</label>
+                        <input type="text" id="nombre-usuario" placeholder="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Fecha de reserva</label>
+                        <input type="text" id="fecha" placeholder="aaaa/mm/dd">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Estado de devolución</label>
+                        <select name="Estado" id="estado-dev">
+                            <option value="">Selecciona un estado</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="activa">Activa</option>
+                            <option value="finalizada">Finalizada</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Fecha de devolución</label>
+                        <input type="text" id="fecha-devolucion" placeholder="aaaa/mm/dd">
                     </div>
                 </div>
             </form>
@@ -70,5 +84,5 @@
         </div>
     </div>
 </body>
-<script src="./script.js"></script>
+<script src="../explorar/script.js"></script>
 </html>
