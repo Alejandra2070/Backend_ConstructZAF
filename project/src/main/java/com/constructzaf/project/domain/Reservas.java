@@ -21,56 +21,31 @@ public class Reservas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_reserva;
 
-    public String getNombreHerramienta() {
-        return nombreHerramienta;
-    }
-
-    public void setNombreHerramienta(String nombreHerramienta) {
-        this.nombreHerramienta = nombreHerramienta;
-    }
-
     private String nombreHerramienta;
     private String nombreUsuario;
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
     private boolean confirmacion;
-
-    public boolean isConfirmacion() {
-        return confirmacion;
-    }
-
-    public void setConfirmacion(boolean confirmacion) {
-        this.confirmacion = confirmacion;
-    }
-
     private LocalDate fecha_reserva;
-
+    
     @Enumerated(EnumType.STRING)
     EstadoR estado_devolucion;
     
     private Long deposito;
     private LocalDate fecha_expiracion;
-
+    
     @ManyToOne
     @JoinColumn(name = "herramienta_id")
     private Herramientas herramienta;
-
+    
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuarios usuario;
-
+    
     public Reservas() {
     }
-
+    
     public Reservas(Long id_reserva, String nombreHerramienta, String nombreUsuario, boolean confirmacion,
-            LocalDate fecha_reserva, EstadoR estado_devolucion, Long deposito, LocalDate fecha_expiracion,
-            Herramientas herramienta, Usuarios usuario) {
+    LocalDate fecha_reserva, EstadoR estado_devolucion, Long deposito, LocalDate fecha_expiracion,
+    Herramientas herramienta, Usuarios usuario) {
         this.id_reserva = id_reserva;
         this.nombreHerramienta = nombreHerramienta;
         this.nombreUsuario = nombreUsuario;
@@ -82,15 +57,36 @@ public class Reservas {
         this.herramienta = herramienta;
         this.usuario = usuario;
     }
-
+    
     public Long getId_reserva() {
         return id_reserva;
     }
-
+    
     public void setId_reserva(Long id_reserva) {
         this.id_reserva = id_reserva;
     }
+    
+    public String getNombreHerramienta() {
+        return nombreHerramienta;
+    }
 
+    public void setNombreHerramienta(String nombreHerramienta) {
+        this.nombreHerramienta = nombreHerramienta;
+    }
+    public boolean isConfirmacion() {
+        return confirmacion;
+    }
+    
+    public void setConfirmacion(boolean confirmacion) {
+        this.confirmacion = confirmacion;
+    }
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
     public LocalDate getFecha_reserva() {
         return fecha_reserva;
     }

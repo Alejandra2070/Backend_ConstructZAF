@@ -34,42 +34,6 @@ return res.json();
     })
 })
 
-/*
-let dataHerramientas = data;
-        
-function mostrarDetalles(id){
-    const herramienta = dataHerramientas.find(item => item.id === id);
-
-    if (herramienta){
-        console.log("Holaaaaaaaaaaaaaaaaa");
-        
-        const detalless = document.getElementById("detallesPopup");
-        detalless.innerHTML = `
-            <div class="popup-contenido">
-            <h3>${a.nombre}</h3><br>
-            <img id="image" src="${a.imagen}" alt="">
-            <h3>${a.descripcion}</h3>
-            <h3>Precio:  ${a.precio}</h3>
-            <h3>Estado:  ${a.estado}</h3><br>
-            
-        </div>
-        `;
-        abrirPopup('detallesPopup')
-    }
-}
-*/
-
-/*.then(detalles => {
-    console.log('Datos:', detalles);
-    
-    let details = document.getElementsByClassName("popup")
-    details.innerHTML = ``
-
-    detalles.forEach(e => {
-        
-    })
-})*/
-
 // Activar item seleccionado
 
 items.forEach(item => {
@@ -125,3 +89,44 @@ function abrirPopupReserva(id){
 function cerrarPopup(id){
     document.getElementById(id).style.display = 'none';
 }
+
+//crear una reserva
+
+const formCrearReserva = document.getElementById('form-crear-reserva');
+
+formCrearReserva.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const nuevaReserva = {
+        nombreHerramienta: document.getElementById('nombre-herramienta').value,
+        nombreUsuario: document.getElementById('nombre-usuario').value,
+        fecha_reserva: document.getElementById('fecha').value,
+        estado_devolucion: document.getElementById('estado').value,
+        fecha_expiracion: document.getElementById('fecha-devolucion').value
+    };
+
+    fetch('http://localhost:8080/construc/reserva',{
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(nuevaReserva)
+    })
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Error al crear reserva');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Reserva creada exitosamente');
+        cerrarPopup('reservaPopup');
+        formCrearReserva.reset();
+        location.reload();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('No se pudo crear la reserva');
+    });
+});

@@ -27,6 +27,9 @@ public class Pagos {
     @OneToMany(mappedBy = "pagos", cascade = CascadeType.ALL)
     private List<Herramientas> herramienta;
 
+    public Pagos() {
+    }
+
     public Pagos(Long id_pago, String nombre_usuario, Long monto_total, String estado, LocalDate fecha_pago,
             int dias_alquilados, String metodo_pago, List<Herramientas> herramienta) {
         this.id_pago = id_pago;
