@@ -25,6 +25,8 @@ public class AlquilerController {
     @Autowired
     private AlquilerService alquilerService;
 
+    
+
     @GetMapping
     public List<Alquiler> mostratAlquileres(){
         return alquilerService.findAll();

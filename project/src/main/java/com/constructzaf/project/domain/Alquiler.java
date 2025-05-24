@@ -60,13 +60,15 @@ public class Alquiler {
         this.fecha_incio = fecha_incio;
     }
 
+    public void setFecha_fin(LocalDate fecha_fin) {
+        this.fecha_fin = fecha_fin;
+    }
+
     public LocalDate getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(LocalDate fecha_fin) {
-        this.fecha_fin = fecha_fin;
-    }
+   
 
     public Long getPrecio_total() {
         return precio_total;
