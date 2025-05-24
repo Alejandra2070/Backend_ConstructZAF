@@ -24,8 +24,7 @@ public class FacturasServiceImpl implements FacturasService{
 
     @Override
     public Factura crearFactura(Factura factura) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'crearFactura'");
+        return facturasRepository.save(factura);
     }
 
 }
