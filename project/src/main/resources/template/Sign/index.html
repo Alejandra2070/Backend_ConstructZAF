@@ -21,24 +21,46 @@
             <div id="titleLogin">Registrarse</div>
             <div id="input1">
                 <img src="img/usuario (1).png" class="icon">
-                <input type="text" placeholder="Nombre de usuario" />
+                <input type="text" id="nombre-crear" placeholder="Nombre de usuario" />
+            </div>
+            <div id="input1">
+                <img src="img/usuario (1).png" class="icon">
+                <input type="text" id="apellido-crear" placeholder="Apellido" />
+            </div>
+            <div id="input1">
+                <img src="img/usuario (1).png" class="icon">
+                <input type="text" id="cedula-crear" placeholder="Cedula" />
+            </div>
+            <div id="input1">
+                <img src="img/usuario (1).png" class="icon">
+                <input type="text" id="telefono-crear" placeholder="Telefono" />
             </div>
             <div id="input1">
                 <img src="img/correo-electronico.png" class="icon">
-                <input type="text" placeholder="Correo Electronico" />
+                <input type="text" id="correo-crear" placeholder="Correo Electronico" />
             </div>
             <div id="input1">
                 <img src="img/bloquear.png" class="icon">
-                <input type="password" placeholder="Contraseña">
+                <input type="password" id="Contraseña" placeholder="Confirmar Contraseña">
+            </div>
+             <div class="form-row">
+                <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select id="rol-crear" name="rol">
+                        <option value="">Seleccione un rol</option>
+                        <option value="PROVEEDORES">Proveedor</option>
+                        <option value="USER">Cliente</option>
+                    </select>
+                </div>
             </div>
             <div id="input1">
-                <img src="img/bloquear.png" class="icon">
-                <input type="password" placeholder="Confirmar Contraseña">
+                <input type="date" id="fecha-ingreso-crear" placeholder="Fecha de ingreso">
             </div>
-            <button type="submit">Registrarse</button>
-            <p>¿Ya tienes una cuenta? <a href="/Login/index.html"><span>Iniciar sesion</span></a></p>
+            <button type="submit" onclick="registro()" id="registro">Registrarse</button>
+            <p>¿Ya tienes una cuenta? <a href="../Login/index.html"><span>Iniciar sesion</span></a></p>
         </div>
         </div>
     </div>
 </body>
+<script src="../Sign/script.js"></script>
 </html>
