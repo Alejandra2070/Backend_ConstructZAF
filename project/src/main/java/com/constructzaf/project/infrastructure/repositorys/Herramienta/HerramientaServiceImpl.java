@@ -10,6 +10,8 @@ import com.constructzaf.project.domain.Herramientas;
 import com.constructzaf.project.domain.DTO.AlquilerDTO;
 import com.constructzaf.project.domain.DTO.HerramientaDTO;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class HerramientaServiceImpl implements HerramientaService{
 
@@ -79,5 +81,17 @@ public class HerramientaServiceImpl implements HerramientaService{
             return Optional.of(herramientasRepository.save(herramienta));
         }
         return herramientasOptional;
+    }
+
+    @Override
+    public Herramientas eliminarHerramienta(Long id) {
+        Optional<Herramientas> herramienta = herramientasRepository.findById(id);
+
+        if (!herramienta.isPresent()) {
+            throw new EntityNotFoundException("la herramienta no se encuentra registrada");
+        }
+        herramientasRepository.deleteById(id);
+       
+        return herramienta.get();
     }
 }

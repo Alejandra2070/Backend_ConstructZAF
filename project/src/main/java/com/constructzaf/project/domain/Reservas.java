@@ -2,6 +2,9 @@ package com.constructzaf.project.domain;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -21,34 +24,34 @@ public class Reservas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_reserva;
 
-    private String nombreHerramienta;
-    private String nombreUsuario;
+    private String nombre_herramienta;
+    private String nombre_usuario;
     private boolean confirmacion;
     private LocalDate fecha_reserva;
     
-    @Enumerated(EnumType.STRING)
-    EstadoR estado_devolucion;
+    private String estado_devolucion;
     
     private Long deposito;
     private LocalDate fecha_expiracion;
     
     @ManyToOne
     @JoinColumn(name = "herramienta_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Herramientas herramienta;
     
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuarios usuario;
     
-    public Reservas() {
-    }
+    public Reservas() {}
     
-    public Reservas(Long id_reserva, String nombreHerramienta, String nombreUsuario, boolean confirmacion,
-    LocalDate fecha_reserva, EstadoR estado_devolucion, Long deposito, LocalDate fecha_expiracion,
+    public Reservas(Long id_reserva, String nombre_herramienta, String nombre_usuario, boolean confirmacion,
+    LocalDate fecha_reserva, String estado_devolucion, Long deposito, LocalDate fecha_expiracion,
     Herramientas herramienta, Usuarios usuario) {
         this.id_reserva = id_reserva;
-        this.nombreHerramienta = nombreHerramienta;
-        this.nombreUsuario = nombreUsuario;
+        this.nombre_herramienta = nombre_herramienta;
+        this.nombre_usuario = nombre_usuario;
         this.confirmacion = confirmacion;
         this.fecha_reserva = fecha_reserva;
         this.estado_devolucion = estado_devolucion;
@@ -67,11 +70,11 @@ public class Reservas {
     }
     
     public String getNombreHerramienta() {
-        return nombreHerramienta;
+        return nombre_herramienta;
     }
 
     public void setNombreHerramienta(String nombreHerramienta) {
-        this.nombreHerramienta = nombreHerramienta;
+        this.nombre_herramienta = nombreHerramienta;
     }
     public boolean isConfirmacion() {
         return confirmacion;
@@ -81,11 +84,11 @@ public class Reservas {
         this.confirmacion = confirmacion;
     }
     public String getNombreUsuario() {
-        return nombreUsuario;
+        return nombre_usuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+        this.nombre_usuario = nombreUsuario;
     }
     public LocalDate getFecha_reserva() {
         return fecha_reserva;
@@ -125,5 +128,13 @@ public class Reservas {
 
     public void setUsuario(Usuarios usuario) {
         this.usuario = usuario;
+    }
+
+    public String getEstado_devolucion() {
+        return estado_devolucion;
+    }
+
+    public void setEstado_devolucion(String estado_devolucion) {
+        this.estado_devolucion = estado_devolucion;
     }
 }

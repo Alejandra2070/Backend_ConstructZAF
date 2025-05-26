@@ -1,5 +1,7 @@
 package com.constructzaf.project.domain;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,28 +16,20 @@ public class Factura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_factura;
 
-    private enum metodo_pago{Tarjeta, Transacción};
-
-    @ManyToOne
-    @JoinColumn(name = "reserva_id")
-    private Reservas reserva;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
-    private Usuarios usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "alquiler_id")
-    private Alquiler alquiler;
+    private String nombre_usuario;
+    private LocalDate fecha_pago;
+    private Long monto_total;
+    private String metodo_pago;
 
     public Factura() {
     }
 
-    public Factura(Long id_factura, Reservas reserva, Usuarios usuario, Alquiler alquiler) {
+    public Factura(Long id_factura, String nombre_usuario, LocalDate fecha_pago, Long monto_total, String metodo_pago) {
         this.id_factura = id_factura;
-        this.reserva = reserva;
-        this.usuario = usuario;
-        this.alquiler = alquiler;
+        this.nombre_usuario = nombre_usuario;
+        this.fecha_pago = fecha_pago;
+        this.monto_total = monto_total;
+        this.metodo_pago = metodo_pago;
     }
 
     public Long getId_factura() {
@@ -46,27 +40,35 @@ public class Factura {
         this.id_factura = id_factura;
     }
 
-    public Reservas getReserva() {
-        return reserva;
+    public String getNombre_usuario() {
+        return nombre_usuario;
     }
 
-    public void setReserva(Reservas reserva) {
-        this.reserva = reserva;
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
     }
 
-    public Usuarios getUsuario() {
-        return usuario;
+    public LocalDate getFecha_pago() {
+        return fecha_pago;
     }
 
-    public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+    public void setFecha_pago(LocalDate fecha_pago) {
+        this.fecha_pago = fecha_pago;
     }
 
-    public Alquiler getAlquiler() {
-        return alquiler;
+    public Long getMonto_total() {
+        return monto_total;
     }
 
-    public void setAlquiler(Alquiler alquiler) {
-        this.alquiler = alquiler;
+    public void setMonto_total(Long monto_total) {
+        this.monto_total = monto_total;
+    }
+
+    public String getMetodo_pago() {
+        return metodo_pago;
+    }
+
+    public void setMetodo_pago(String metodo_pago) {
+        this.metodo_pago = metodo_pago;
     }
 }

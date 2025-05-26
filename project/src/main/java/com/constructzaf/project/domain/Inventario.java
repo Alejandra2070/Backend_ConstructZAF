@@ -2,6 +2,9 @@ package com.constructzaf.project.domain;
 
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +29,7 @@ public class Inventario {
 
     @ManyToOne
     @JoinColumn(name = "id_herramienta")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Herramientas herramienta;
 
     public Inventario() {

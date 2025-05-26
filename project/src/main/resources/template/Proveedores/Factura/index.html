@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Factura/style.css">
 </head>
 <body>
     <!-- Menu para móvil -->
@@ -19,9 +19,9 @@
     <div id="lateral" class="lateral">
         <h2>CONSTRUCT <br> ZAF</h2>
         <ul id="menu">
-            <li><img src="/imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
-            <li><img src="/imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
-            <li class="active"><img src="/imagenes/listas-de-control.png"><a href="../Factura/index.html">Facturación</a></li>
+            <li><img src="../../imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
+            <li><img src="../../imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
+            <li class="active"><img src="../../imagenes/listas-de-control.png"><a href="../Factura/index.html">Facturación</a></li>
         </ul>
     </div>
 
@@ -29,10 +29,10 @@
     <div class="content">
         <div class="superior">
             <div class="buscador">
-                <img id="busca" src="/imagenes/buscar.png">
-                <input class="buscar" type="text" placeholder="Buscar">
+                <img id="busca" src="../../imagenes/buscar.png">
+                <input class="buscar" type="text" placeholder="Buscar" onkeyup="searchUser()">
             </div>
-            <p><img src="/imagenes/usuario (1).png" id="user"> Proveedor</p>
+            <p><img src="../../imagenes/usuario (1).png" id="user"> Proveedor</p>
         </div> 
         
         <h2 class="title-usuarios">Facturas y pagos</h2>
@@ -70,7 +70,7 @@
 
         <div class="btn-actions">
             <button onclick="abrirPopup('detallesFPopup')" class="btn-edit">Ver detalles</button>
-            <button onclick="abrirPopup('eliminarPopup')" class="btn-delete">Descargar Factura</button>
+            <button onclick="abrirPopup('verFactura'), generarFactura(1)" class="btn-delete">Generar Factura</button>
         </div>
 
         <!-- PopUp ver detalles -->
@@ -102,9 +102,21 @@
                         <p> Efectivo</p>
                     </div>
                 </div><br>
-                <button onclick="cerrarPopup('detallesFPopup')" class="btn-edit">Cerrar</button>
+                <!--<button onclick="cerrarPopup('detallesFPopup')" class="btn-edit">Cerrar</button>-->
+            </div>
+        </div>
+
+        <!--Ver factura-->
+        <div class="popup" id="verFactura">
+            <div class="popup-contenido">
+                <span class="cerrar" onclick="cerrarPopup('verFactura')">&times;</span>
+                <h3>Factura</h3><br>
+                <div id="cuerpo"></div><br>
+                <button onclick="" class="btn-edit">Descargar factura</button>
+                <button onclick="cerrarPopup('verFactura')" class="btn-edit">Cerrar</button>
             </div>
         </div>
 </body>
-<script src="./script.js"></script>
+<script src="../Factura/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </html>

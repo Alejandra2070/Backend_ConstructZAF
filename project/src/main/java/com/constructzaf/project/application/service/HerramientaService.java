@@ -16,4 +16,6 @@ public interface HerramientaService {
     public Herramientas pathHerramienta(Long id, Herramientas herramienta);
 
     Optional<Herramientas> update(Long id, Herramientas herramienta);
+
+    public Herramientas eliminarHerramienta(Long id);
 }

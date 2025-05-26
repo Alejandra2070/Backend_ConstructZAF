@@ -30,14 +30,14 @@
             <h1 id="tituloSuper">Catálogo</h1>
             <p><img src="../../imagenes/usuario (1).png" id="user"> Cliente</p>
         </div> 
+        <!--Aquí se muestran las tarjetas-->
         <div id="dashboard"></div>
     </div>
 
     <!-- PopUp ver detalles -->
     <div class="popup" id="detallesPopup">
         <span class="cerrar" onclick="cerrarPopup('detallesPopup')">&times;</span>
-        <div class="popup-contenido">
-        </div>
+        <div class="popup-contenido"></div>
     </div>
 
     <!-- PopUp reserva -->
@@ -45,7 +45,7 @@
         <div class="popups-contenido">
             <span class="cerrars" onclick="cerrarPopup('reservaPopup')">&times;</span>
             <h3>Reservación</h3><br>
-            <form id="form-crear-reserva"></form>
+            <form id="form-crear-reserva">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="username">Nombre de Herramienta</label>
@@ -79,8 +79,6 @@
                     </div>
                 </div>
             </form>
-            <button onclick="cerrarPopup('reservaPopup')" class="btn-edit">Reservar</button>
-            <button onclick="cerrarPopup('reservaPopup')" class="btn-edit">Cancelar</button>
         </div>
     </div>
 </body>
