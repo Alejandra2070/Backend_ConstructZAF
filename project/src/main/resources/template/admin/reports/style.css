@@ -134,7 +134,26 @@ input.buscar-repor{
     margin-top: 10px;
     color: #17324D;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+#mensaje {
+    margin-top: 20px;
+    color: red;
+}
 @media (max-width: 768px){
     .lateral{
         transform: translateX(-100%);
