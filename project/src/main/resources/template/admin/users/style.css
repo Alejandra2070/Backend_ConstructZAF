@@ -380,8 +380,13 @@ h2#titulo{
         overflow-x: auto;
     }
 
-    .superior{
+    
+    img#busca{
+        width: 5vw;
+        height: 5vw;
     }
+
+    
 
 
 }
