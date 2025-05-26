@@ -72,13 +72,19 @@ img#construccion{
     background-color: #FBFBFB;
     border-radius: 4px;
     display: block;
+    border: none;
 }
 #right input {
     border: none;
     background-color: inherit;
     margin-bottom: 5px;
 }
-
+#inpuuut1{
+    outline: none;
+}
+#inpuuut2{
+    outline: none;
+}
 img.icon{
     width: 2vh;
 }
