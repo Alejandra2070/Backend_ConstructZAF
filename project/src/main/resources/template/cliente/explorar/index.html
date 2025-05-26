@@ -28,7 +28,14 @@
     <div class="content">
         <div class="superior">
             <h1 id="tituloSuper">Catálogo</h1>
-            <p><img src="../../imagenes/usuario (1).png" id="user"> Cliente</p>
+            <div class="userMenu">
+                <div id="userName" class="userName">
+                    <img src="../../imagenes/usuario (1).png" id="user"> Cliente
+                </div>
+                <div id="user-menu" class="user-menu">
+                    <a href="../../Login/index.html">Cerrar Sesión</a>
+                </div>
+            </div>
         </div> 
         <!--Aquí se muestran las tarjetas-->
         <div id="dashboard"></div>
@@ -78,6 +85,7 @@
                         <input type="text" id="fecha-devolucion" placeholder="aaaa/mm/dd">
                     </div>
                 </div>
+                <button onclick="cerrarPopup('reservaPopup')" class="btn-edit">Guardar</button>
             </form>
         </div>
     </div>
