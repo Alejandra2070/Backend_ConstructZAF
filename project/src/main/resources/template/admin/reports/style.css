@@ -110,9 +110,54 @@ img#user{
     margin-right: 5px;
 }
 
+.userName{
+    display: flex;
+    align-items: center;
+    font-family: bold;
+    color: #17324D;
+    cursor: pointer;
+}
+.userMenu{
+    position: relative;
+    display: inline-block;
+}
+
+#userName{
+    cursor: pointer;
+    color: #17324D;
+    font-family: bold;
+}
+
+.user-menu{
+    display: none;
+    position: absolute;
+    left: -15px;
+    right: 0;
+    top: 33px;
+    background-color: #e1e3e6;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.user-menu a{
+    color: #17324D;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: regular;
+}
+
+.user-menu a:hover{
+    background-color: #f1f1f1;
+}
+
+
 /*Buscador*/
 
-img#busca-repor{
+img#busca{
     height: 2vw;
     width: 2vw;
 }
@@ -121,12 +166,11 @@ img#busca-repor{
     gap: 10px;
 }
 
-input.buscar-repor{
+input.buscar{
     border-radius: 20px;
     padding: 6px 30px;
     color: #606F81;
 }
-
 .title-repor{
     font-family: bold;
     text-align: center;
@@ -134,20 +178,22 @@ input.buscar-repor{
     margin-top: 10px;
     color: #17324D;
 }
-table {
+.table-container-report{
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    padding: 20px;
 }
 
-th, td {
-    border: 1px solid #ccc;
+table{
+    font-family: regular;
+    width: 95%;
+    border-collapse: collapse;
+    background-color: #F4F5FB;
+}
+
+th,td{
     padding: 10px;
     text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
 }
 
 #mensaje {
@@ -170,5 +216,10 @@ th {
     .content{
         margin-left: 0;
         padding-top: 60px;
+    }
+    .table-container-report{
+        max-width: 400px;
+        overflow-y: auto;
+        overflow-x: auto;
     }
 }

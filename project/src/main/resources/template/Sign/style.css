@@ -116,6 +116,27 @@ img.icon{
     text-decoration: underline;
 }
 
+.form-group{
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-left: 3vw;
+    background-color: #FBFBFB;
+    border-radius: 4px;
+    display: block;
+    font-family: regular;
+}
+
+label{
+    font-family: regular;
+}
+#rol-crear{
+    width: 80%;
+    color: #606F81;
+}
+input{
+    outline: none;
+}
 @media (max-width: 578px) {
     #input1{
         width: 96%;

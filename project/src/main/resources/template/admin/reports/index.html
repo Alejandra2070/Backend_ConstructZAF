@@ -34,8 +34,19 @@
     <!-- Contenido  -->
     <div class="content-repor">
         <div class="superior">
-            <p><img src="../../imagenes/usuario (1).png" id="user"> Administrador</p>
-        </div>
+            <div class="buscador">
+                <img id="busca" src="../../imagenes/buscar.png">
+                <input id="search-item" class="buscar" type="text" placeholder="Buscar" onkeyup="searchUser()">
+            </div>
+            <div class="userMenu">
+                <div id="userName" class="userName">
+                    <img src="../../imagenes/usuario (1).png" id="user"> Administrador
+                </div>
+                <div id="user-menu" class="user-menu">
+                    <a href="../../Login/index.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div> 
 
         <!-- Titulo del contendo -->
         <h2 class="title-report">Reportes</h2>
@@ -46,8 +57,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Inventario</th>
+                        <th>id herramienta</th>
                         <th>Usuario</th>
+                        <th>Descripción del daño</th>
                         <th>Herramienta mas alquilada</th>
                     </tr>
                 </thead>

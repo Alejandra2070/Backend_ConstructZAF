@@ -302,6 +302,19 @@ h2#titulo{
         transform: translateX(0);
     }
 
+    .userMenu{
+        margin: -50px -4px;
+        height: 2vh;
+        width: 45vw;
+    }
+    img#user{
+        width: 4vw;
+    }
+
+    li img{
+        width: 6vw;
+        height: 6vw;
+    }
     .hamburger{
         display: flex;
     }
@@ -317,5 +330,25 @@ h2#titulo{
         overflow-y: auto;
         overflow-x: auto;
     }
+    img#busca{
+        width: 5vw;
+        height: 5vw;
+    }
+
+    img#busca-pago{
+        height: 4vw;
+        width: 4vw;
+    }
+    .buscador{
+        display: flex;
+        gap: 10px;
+    }
+
+    input.buscar-pago{
+        border-radius: 20px;
+        padding: 6px 30px;
+        color: #606F81;
+    }
+
 
 }
