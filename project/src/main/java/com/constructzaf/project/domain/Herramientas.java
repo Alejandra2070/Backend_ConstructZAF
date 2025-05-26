@@ -2,6 +2,9 @@ package com.constructzaf.project.domain;
 
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,32 +22,28 @@ public class Herramientas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_herramienta;
 
-    @NotBlank(message = "nombre obligatorio")
     private String nombre;
     private String descripcion;
     private String estado;
     private String imagen;
     private Long precio;
 
-    @OneToMany(mappedBy = "herramienta", cascade = CascadeType.ALL)
-    private List<Reservas> reserva;
-
     @ManyToOne
     @JoinColumn(name = "id_pago")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Pagos pagos;
 
     public Herramientas() {
     }
 
     public Herramientas(Long id_herramienta, String nombre, String descripcion, String estado, String imagen,
-            Long precio, List<Reservas> reserva) {
+            Long precio) {
         this.id_herramienta = id_herramienta;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
         this.imagen = imagen;
         this.precio = precio;
-        this.reserva = reserva;
     }
 
     public Long getId_herramienta() {
@@ -93,13 +92,5 @@ public class Herramientas {
 
     public void setPrecio(Long precio) {
         this.precio = precio;
-    }
-
-    public List<Reservas> getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(List<Reservas> reserva) {
-        this.reserva = reserva;
     }
 }

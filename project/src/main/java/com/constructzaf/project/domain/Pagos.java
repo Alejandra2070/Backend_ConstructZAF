@@ -24,7 +24,7 @@ public class Pagos {
     private int dias_alquilados;
     private String metodo_pago;
 
-    @OneToMany(mappedBy = "pagos", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pagos")
     private List<Herramientas> herramienta;
 
     public Pagos() {

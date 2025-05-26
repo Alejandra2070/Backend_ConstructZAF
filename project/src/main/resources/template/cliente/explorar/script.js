@@ -34,6 +34,35 @@ return res.json();
     })
 })
 
+// Mostrar detalles de la herramienta
+
+function abrirPopup(herramienta){
+
+    const popup = document.getElementById("detallesPopup");
+    const contenido = popup.querySelector(".popup-contenido");
+
+    contenido.innerHTML =`
+        <h3>${herramienta.nombre}</h3><br>
+        <img id="image" src="${herramienta.imagen}" alt="">
+        <h3>${herramienta.descripcion}</h3>
+        <h3>Precio:  ${herramienta.precio}</h3>
+        <h3>Estado:  ${herramienta.estado}</h3><br>
+        <button onclick="abrirPopupReserva('reservaPopup'); cerrarPopup('detallesPopup')" class="btn-edit">Reservar</button>
+    `;
+
+    popup.style.display = "flex";
+}
+
+//abrir popup de reservas
+
+function abrirPopupReserva(id){
+    document.getElementById(id).style.display = 'block';
+}
+
+function cerrarPopup(id){
+    document.getElementById(id).style.display = 'none';
+}
+
 // Activar item seleccionado
 
 items.forEach(item => {
@@ -63,33 +92,6 @@ hamburger.addEventListener('click', () => {
     }
 })
 
-// Mostrar o ocultar los popUp
-
-function abrirPopup(herramienta){
-
-    const popup = document.getElementById("detallesPopup");
-    const contenido = popup.querySelector(".popup-contenido");
-
-    contenido.innerHTML =`
-        <h3>${herramienta.nombre}</h3><br>
-        <img id="image" src="${herramienta.imagen}" alt="">
-        <h3>${herramienta.descripcion}</h3>
-        <h3>Precio:  ${herramienta.precio}</h3>
-        <h3>Estado:  ${herramienta.estado}</h3><br>
-        <button onclick="abrirPopupReserva('reservaPopup'); cerrarPopup('detallesPopup')" class="btn-edit">Reservar</button>
-    `;
-
-    popup.style.display = "flex";
-}
-
-function abrirPopupReserva(id){
-    document.getElementById(id).style.display = 'block';
-}
-
-function cerrarPopup(id){
-    document.getElementById(id).style.display = 'none';
-}
-
 //crear una reserva
 
 const formCrearReserva = document.getElementById('form-crear-reserva');
@@ -98,11 +100,14 @@ formCrearReserva.addEventListener('submit', function(e){
     e.preventDefault();
 
     const nuevaReserva = {
-        nombreHerramienta: document.getElementById('nombre-herramienta').value,
-        nombreUsuario: document.getElementById('nombre-usuario').value,
+        nombre_herramienta: document.getElementById('nombre-herramienta').value,
+        nombre_usuario: document.getElementById('nombre-usuario').value,
         fecha_reserva: document.getElementById('fecha').value,
         estado_devolucion: document.getElementById('estado').value,
-        fecha_expiracion: document.getElementById('fecha-devolucion').value
+        fecha_expiracion: document.getElementById('fecha-devolucion').value,
+        deposito: document.getElementById('deposito').value,
+        herramienta_id: document.getElementById('id-herra').value,
+        usuario_id: document.getElementById('id-user').value
     };
 
     fetch('http://localhost:8080/construc/reserva',{

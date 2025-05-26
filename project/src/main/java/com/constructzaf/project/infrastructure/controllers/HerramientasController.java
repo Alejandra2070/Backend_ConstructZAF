@@ -5,19 +5,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.constructzaf.project.application.service.HerramientaService;
 import com.constructzaf.project.domain.Herramientas;
-import com.constructzaf.project.domain.DTO.AlquilerDTO;
 import com.constructzaf.project.domain.DTO.HerramientaDTO;
 import com.constructzaf.project.exception.ResourceNotFoundException;
 
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,4 +64,9 @@ public class HerramientasController {
         throw new ResourceNotFoundException("herramienta no encontrada: " + id);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Herramientas> eliminarHerramienta(@PathVariable Long id){
+        Herramientas eliminado = HerramientasService.eliminarHerramienta(id);
+        return ResponseEntity.ok(eliminado);
+    }
 }

@@ -2,6 +2,81 @@ const items = document.querySelectorAll('#menu li');
 const late = document.getElementById('lateral');
 const hamburger = document.getElementById('hamburger');
 
+const token = localStorage.getItem('token');
+console.log('Token guardado:', token);
+
+//mostrar detalles de factura
+
+function generarFactura(id_factura){
+    fetch(`http://localhost:6060/construct/facturas/${id_factura}`, {
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+    }})
+    .then(response => {
+        if(!response.ok){
+            throw new Error("Error al obtener la factura");
+        }
+        return response.json();
+    })
+    .then(data => {
+        const nombreU = data.nombre_usuario;
+        const fecha = data.fecha_pago;
+        const monto = `$${data.monto_total}`;
+        const metodo = data.metodo_pago;
+
+        abrirPopup('verFactura');
+        generarFactura(nombreU, fecha, monto, metodo);
+    })
+    .catch(error => {
+        console.error("Error al cargar la factura:", error);
+        alert("No se pudo cargar la factura");
+    })
+}
+
+/*
+function generarFactura(nombre_usuario, fecha_pago, monto_total, metodo_pago){
+    const factura = document.getElementById("cuerpo");
+    /*factura.dataset.id = nombre_usuario;
+    factura.dataset.id = fecha_pago;
+    factura.dataset.id = monto_total;
+    factura.dataset.id = metodo_pago;
+    factura.innerHTML = `
+        <div id="info">
+            <strong>Nombre de Usuario: </strong><br>
+            <strong>Fecha de pago: </strong><br>
+            <strong>Valor total: </strong><br>
+            <strong>Método de pago: </strong><br>
+        </div>
+        <div id="mensaje">
+            <h3>Factura</h3>
+            <p>${nombre_usuario}</p>
+            <p>${fecha_pago}</p>
+            <p>${monto_total}</p>
+            <p>${metodo_pago}</p>
+            <button class="btn-delete" onclick="descargar('${nombre_usuario}', '${fecha_pago}', '${monto_total}', '${metodo_pago}')">Descargar Factura</button> 
+        </div>
+    `;
+}
+
+function descargar(nombre_usuario, fecha_pago, monto_total, metodo_pago){
+    const { jsPDF} = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFont("Helvetica");
+    doc.setFontSize(14);
+    doc.text("Factura de pago", 20,20);
+
+    doc.setFontSize(12);
+    doc.text(`Nombre de Usuario: ${nombre_usuario}`, 20,40);
+    doc.text(`Fecha de pago: ${fecha_pago}`, 20,50);
+    doc.text(`Valor total: ${monto_total}`, 20,60);
+    doc.text(`Método de pago: ${metodo_pago}`, 20,70);
+
+    doc.save(`factura_${nombre_usuario}.pdf`);
+}
+*/
 // Activar item seleccionado
 
 items.forEach(item => {

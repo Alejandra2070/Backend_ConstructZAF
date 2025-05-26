@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservas</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../Reservas/style.css">
 </head>
 <body>
     <!-- Menu para móvil -->
@@ -19,9 +19,9 @@
     <div id="lateral" class="lateral">
         <h2>CONSTRUCT <br> ZAF</h2>
         <ul id="menu">
-            <li class="active"><img src="/imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
-            <li><img src="/imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
-            <li><img src="/imagenes/listas-de-control.png"><a href="../Factura/index.html">Facturación</a></li>
+            <li class="active"><img src="../../imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
+            <li><img src="../../imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
+            <li><img src="../../imagenes/listas-de-control.png"><a href="../Factura/index.html">Facturación</a></li>
         </ul>
     </div>
 
@@ -29,17 +29,17 @@
     <div class="content">
         <div class="superior">
             <div class="buscador">
-                <img id="busca" src="/imagenes/buscar.png">
-                <input id="search-item" class="buscar" type="text" placeholder="Buscar" onkeyup="search()">
+                <img id="busca" src="../../imagenes/buscar.png">
+                <input id="search-item" class="buscar" type="text" placeholder="Buscar" onkeyup="searchUser()">
             </div>
-            <p><img src="/imagenes/usuario (1).png" id="user"> Proveedor</p>
+            <p><img src="../../imagenes/usuario (1).png" id="user"> Proveedor</p>
         </div> 
 
         <h2 class="title-usuarios">Solicitudes de alquiler</h2>
         <div class="dashboard">
             <!-- tabla de informacion de todos las reservas -->
             <div class="table-container">
-                <table>
+                <table id="miTabla">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -128,5 +128,5 @@
         </div>
     </div>
 </body>
-<script src="./script.js"></script>
+<script src="../Reservas/script.js"></script>
 </html>
