@@ -19,8 +19,8 @@
     <div id="lateral" class="lateral">
         <h2>CONSTRUCT <br> ZAF</h2>
         <ul id="menu">
-            <li class="active"><img src="../../imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
-            <li><img src="../../imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
+            <li><img src="../../imagenes/perfil.png"><a href="../Herramientas/index.html">Herramientas</a></li>
+            <li class="active"><img src="../../imagenes/acuerdo.png"><a href="../Reservas/index.html">Reservas</a></li>
             <li><img src="../../imagenes/listas-de-control.png"><a href="../Factura/index.html">Facturación</a></li>
         </ul>
     </div>
@@ -32,7 +32,14 @@
                 <img id="busca" src="../../imagenes/buscar.png">
                 <input id="search-item" class="buscar" type="text" placeholder="Buscar" onkeyup="searchUser()">
             </div>
-            <p><img src="../../imagenes/usuario (1).png" id="user"> Proveedor</p>
+            <div class="userMenu">
+                <div id="userName" class="userName">
+                    <img src="../../imagenes/usuario (1).png" id="user"> Proveedor
+                </div>
+                <div id="user-menu" class="user-menu">
+                    <a href="../../Login/index.html">Cerrar Sesión</a>
+                </div>
+            </div>
         </div> 
 
         <h2 class="title-usuarios">Solicitudes de alquiler</h2>

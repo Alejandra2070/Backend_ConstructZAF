@@ -35,7 +35,7 @@ console.log("Holaaa");
                 window.location.href = "http://127.0.0.1:5500/project/src/main/resources/template/cliente/explorar/index.html";
             }
             if(rol == 'ADMIN'){
-                window.location.href = "http://127.0.0.1:5500/project/src/main/resources/template/admin/home/index.html";
+                window.location.href = "http://127.0.0.1:5500/project/src/main/resources/template/admin/users/index.html";
             }
             if(rol == 'PROVEEDORES'){
                 window.location.href = "http://127.0.0.1:5500/project/src/main/resources/template/Proveedores/Herramientas/index.html";

@@ -135,3 +135,21 @@ formCrearReserva.addEventListener('submit', function(e){
         alert('No se pudo crear la reserva');
     });
 });
+
+// Mostrar y ocultar el menu del usuario 
+
+document.getElementById("userName").addEventListener("click", function(event){
+    event.stopPropagation(); // Evita el cierre inmediato
+    const menu = document.getElementById("user-menu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+
+// Cierra el menu si se hace click afuera de el 
+document.addEventListener("click", function(event){
+    const menu = document.getElementById("user-menu");
+    const name = document.getElementById("userName");
+
+    if(!name.contains(event.target) && !menu.contains(event.target)){
+        menu.style.display = "none";
+    }
+})
