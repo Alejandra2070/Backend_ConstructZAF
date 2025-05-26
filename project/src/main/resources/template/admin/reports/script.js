@@ -31,41 +31,43 @@ hamburger.addEventListener('click', () => {
     }
 })
 
-window.onload = function () {
-  fetch('http://localhost:8080/reportes')  // Cambia si usas otro puerto o ruta
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Respuesta no válida del servidor");
-      }
-      return response.json();
-    })
-    .then(data => {
-      const tabla = document.getElementById("tabla-reportes");
-      const cuerpo = document.getElementById("cuerpo-tabla");
-      const mensaje = document.getElementById("mensaje");
-      cuerpo.innerHTML = "";
 
-      if (!data || data.length === 0) {
-        mensaje.textContent = "No hay reportes disponibles.";
-        return;
-      }
+// ------------------------------------------------------------------------------------------------
 
-      data.forEach(reporte => {
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
-          <td>${reporte.id_reporte}</td>
-          <td>${reporte.inventario_id}</td>
-          <td>${reporte.usuario_id}</td>
-          <td>${reporte.herramientas_mas_usadas}</td>
-        `;
-        cuerpo.appendChild(fila);
-      });
+const token = localStorage.getItem('token');
+console.log('Token guardado: ', token);
 
-      tabla.style.display = "table";
-    })
-    .catch(error => {
-      console.error("Error al cargar los reportes:", error);
-      document.getElementById("mensaje").textContent = "Error al cargar los reportes.";
-    });
-};
+// ----------------------------------------------------------------------------------
 
+fetch('http://localhost:8080/construct/reportes', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer ' + token,
+    'Content-Type': 'application/json'
+  }
+})
+.then(res => {
+  if(!res.ok) throw new Error('No autorizado o error en la petición');
+  return res.json();
+})
+.then(data => {
+  console.log('Datos recibidos;', data);
+
+  let datos = document.getElementById("miTablaReport")
+  datos.innerHTML = ``
+
+  data.forEach( a => {
+    datos.innerHTML += `
+      <tr>
+        <td>${a.id_reporte}</td>
+        <td>${a.inventario_id}</td>
+        <td>${a.nombre}</td>
+        <td>${a.herramientas_mas_usadas}</td>
+      </tr>
+    `;
+  });
+})
+.catch(err => {
+  console.log('Error', err);
+  
+});
