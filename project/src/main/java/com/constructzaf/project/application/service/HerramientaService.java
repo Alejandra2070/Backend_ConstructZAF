@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import com.constructzaf.project.domain.Herramientas;
+import com.constructzaf.project.domain.DTO.HerramientaDTO;
 
 public interface HerramientaService {
-    List<Herramientas> findAll();
+    List<HerramientaDTO> findAll();
 
-    Optional<Herramientas> findById(Long id);
+    Optional<HerramientaDTO> findById(Long id);
 
     public Herramientas crearHerramienta(Herramientas herramienta);
 

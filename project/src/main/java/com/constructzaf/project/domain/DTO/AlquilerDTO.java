@@ -1,7 +1,12 @@
 package com.constructzaf.project.domain.DTO;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatter;
+import com.constructzaf.project.domain.Alquiler;
+
 public class AlquilerDTO {
 
+    public Long id_alquiler;
     public String nombre_usuario;
     public String nombre_herramienta;
     public String fecha_inicio;
@@ -13,17 +18,22 @@ public class AlquilerDTO {
     
     public AlquilerDTO() {
     }
-    public AlquilerDTO(String nombre_usuario, String nombre_herramienta, String fecha_inicio, String fecha_fin,
-            Long precio_dia, Long precio_total, String estado, Long id_usuario) {
-        this.nombre_usuario = nombre_usuario;
-        this.nombre_herramienta = nombre_herramienta;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
-        this.precio_dia = precio_dia;
-        this.precio_total = precio_total;
-        this.estado = estado;
-        this.id_usuario = id_usuario;
-    }
+    
+    public AlquilerDTO(Alquiler alquiler) {
+    this.id_alquiler = alquiler.getId_alquiler();
+    this.nombre_usuario = alquiler.getNombre_usuario();
+    this.nombre_herramienta = alquiler.getNombre_herramienta();
+    DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+    this.fecha_inicio = alquiler.getFecha_incio() != null ? alquiler.getFecha_incio().format(formatter) : null;
+    this.fecha_fin = alquiler.getFecha_fin() != null ? alquiler.getFecha_fin().format(formatter) : null;
+    this.precio_dia = alquiler.getPrecio_dia();
+    this.precio_total = alquiler.getPrecio_total();
+    this.estado = alquiler.getEstado();
+    this.id_usuario = alquiler.getUsuario() != null ? alquiler.getUsuario().getId_usuario() : null;
+}
+
+    
+
     public String getNombre_usuario() {
         return nombre_usuario;
     }
@@ -71,6 +81,12 @@ public class AlquilerDTO {
     }
     public void setId_usuario(Long id_usuario) {
         this.id_usuario = id_usuario;
+    }
+    public Long getId_alquiler() {
+        return id_alquiler;
+    }
+    public void setId_alquiler(Long id_alquiler) {
+        this.id_alquiler = id_alquiler;
     }
 
     

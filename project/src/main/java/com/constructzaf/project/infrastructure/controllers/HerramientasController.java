@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.constructzaf.project.application.service.HerramientaService;
 import com.constructzaf.project.domain.Herramientas;
+import com.constructzaf.project.domain.DTO.AlquilerDTO;
+import com.constructzaf.project.domain.DTO.HerramientaDTO;
 import com.constructzaf.project.exception.ResourceNotFoundException;
 
 import jakarta.validation.Valid;
@@ -33,19 +35,15 @@ public class HerramientasController {
 
     
     @GetMapping
-    public List<Herramientas> list(){
+    public List<HerramientaDTO> list(){
         return HerramientasService.findAll();
     }
     
-    @GetMapping("/{id}")
-    public ResponseEntity<Herramientas> view(@PathVariable Long id) {
-        Optional<Herramientas> herramientaView = HerramientasService.findById(id);
-        if (herramientaView.isPresent()) {
-            return ResponseEntity.ok(herramientaView.get());
-        }
-        throw new ResourceNotFoundException("herramienta no esta registrada: " + id);
+   @GetMapping("/{id}")
+    public Optional<HerramientaDTO> mostrarAlquileresId(@PathVariable Long id){
+        return HerramientasService.findById(id);
     }
-    
+
     @PostMapping
     public ResponseEntity<Herramientas> createHerramienta(@Valid @RequestBody Herramientas herramienta)  {
         Herramientas save = HerramientasService.crearHerramienta(herramienta);
