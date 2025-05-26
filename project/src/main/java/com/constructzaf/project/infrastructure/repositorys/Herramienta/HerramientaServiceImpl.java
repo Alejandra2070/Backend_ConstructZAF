@@ -1,10 +1,14 @@
 package com.constructzaf.project.infrastructure.repositorys.Herramienta;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import com.constructzaf.project.application.service.HerramientaService;
+import com.constructzaf.project.domain.Alquiler;
 import com.constructzaf.project.domain.Herramientas;
+import com.constructzaf.project.domain.DTO.AlquilerDTO;
+import com.constructzaf.project.domain.DTO.HerramientaDTO;
 
 @Service
 public class HerramientaServiceImpl implements HerramientaService{
@@ -16,13 +20,20 @@ public class HerramientaServiceImpl implements HerramientaService{
     }
 
     @Override
-    public List<Herramientas> findAll(){
-        return (List<Herramientas>) herramientasRepository.findAll();
+    public List<HerramientaDTO> findAll() {
+        List<Herramientas> herramienta = herramientasRepository.findAll();
+        List<HerramientaDTO> herramientaDTO = new ArrayList<>();
+
+        for (Herramientas herra : herramienta) {
+            HerramientaDTO dto = new HerramientaDTO(herra); 
+            herramientaDTO.add(dto);
+        }
+        return herramientaDTO;
     }
 
     @Override
-    public Optional<Herramientas> findById(Long id) { 
-        return herramientasRepository.findById(id);
+    public Optional<HerramientaDTO> findById(Long id) {
+        return herramientasRepository.findById(id).map(herramienta -> new HerramientaDTO(herramienta));
     }
 
     @Override

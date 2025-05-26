@@ -2,15 +2,14 @@ package com.constructzaf.project.application.service;
 
 import java.util.List;
 import java.util.Optional;
-
-import com.constructzaf.project.domain.Alquiler;
+import com.constructzaf.project.domain.DTO.AlquilerDTO;
 
 public interface AlquilerService {
 
-    List<Alquiler> findAll();
+    List<AlquilerDTO> findAll();
 
-    public Alquiler crearAlquiler(Alquiler alquiler);
+    Optional<AlquilerDTO> findById(Long id);
 
-    public Optional<Alquiler> findById(Long id);
+    Optional<AlquilerDTO> update(Long id, AlquilerDTO alquiler);
     
 }

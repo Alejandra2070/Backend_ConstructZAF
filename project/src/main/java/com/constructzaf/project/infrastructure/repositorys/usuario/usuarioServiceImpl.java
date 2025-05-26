@@ -1,10 +1,14 @@
 package com.constructzaf.project.infrastructure.repositorys.usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import com.constructzaf.project.application.service.UsuariosService;
+import com.constructzaf.project.domain.Alquiler;
 import com.constructzaf.project.domain.Usuarios;
+import com.constructzaf.project.domain.DTO.AlquilerDTO;
+import com.constructzaf.project.domain.DTO.UsuarioDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -19,8 +23,15 @@ public class usuarioServiceImpl implements UsuariosService{
     }
 
     @Override
-    public List<Usuarios> findAll() {
-       return (List<Usuarios>) usuarioRepository.findAll();
+    public List<UsuarioDTO> findAll() {
+      List<Usuarios> usuarios = usuarioRepository.findAll();
+        List<UsuarioDTO> usuarioDTO = new ArrayList<>();
+
+        for (Usuarios usuario : usuarios) {
+            UsuarioDTO dto = new UsuarioDTO(usuario); 
+            usuarioDTO.add(dto);
+        }
+        return usuarioDTO;
     }
 
     @Override

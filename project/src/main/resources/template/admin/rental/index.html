@@ -90,14 +90,12 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="id">ID</label>
-                            <input type="text" id="id-ver" readonly >
+                            <input type="text" id="id-ver" placeholder="Ingrese ID de alquiler">
+                            <button type="button" onclick="buscarAlquiler()">Buscar</button>
                         </div>
                     </div>
                 </form>
-                <p><span>Usuario: </span id="usuario-nombre"> Alejandra Machuca</p>
-                <p><span>Email: </span id="usuario-email"> Alejandra@gmial.com</p>
-                <p><span>Telefono: </span id="usuario-telefono"> 3224739100</p>
-                <p><span>Cédula: </span id="usuario-cedula"> 1092437283</p>
+                <div id="info-usuario"></div>
                 <div class="table-Popup-alqui">
                     <table id="Tabla-alqui-PopUp">
                         <thead>
@@ -109,18 +107,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr onclick="mostrarDetalleAlquiler(1)">
-                                <td>Taladro</td>
-                                <td>01/05/2025</td>
-                                <td>05/05/2025</td>
-                                <td>$5,000</td>
-                            </tr>
-                            <tr>
-                                <td>Taladro</td>
-                                <td>01/05/2025</td>
-                                <td>05/05/2025</td>
-                                <td>$5,000</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -144,7 +130,7 @@
                         </div>
                     </div>
                     <div class="botonesAlqui">
-                        <button type="submit" class="btn-amarillo">Confirmar devolución</button>
+                        <button type="submit" class="btn-amarillo" onclick="devolver()">Confirmar devolución</button>
                         <button type="button" class="btn-gris" onclick="cerrarPopupAlqui('devolverPopup')">Cancelar</button>
                     </div>
                 </form>

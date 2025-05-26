@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.constructzaf.project.application.service.UsuariosService;
 import com.constructzaf.project.domain.Usuarios;
+import com.constructzaf.project.domain.DTO.UsuarioDTO;
 
 
 @RestController
@@ -28,7 +29,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuarios> findAll(){
+    public List<UsuarioDTO> findAll(){
         return usuariosService.findAll();
     }
 

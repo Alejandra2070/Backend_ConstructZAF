@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.constructzaf.project.application.service.AlquilerService;
-import com.constructzaf.project.domain.Alquiler;
+import com.constructzaf.project.domain.DTO.AlquilerDTO;
 
 
 @RestController
@@ -25,29 +26,24 @@ public class AlquilerController {
     @Autowired
     private AlquilerService alquilerService;
 
-    
-
     @GetMapping
-    public List<Alquiler> mostratAlquileres(){
+    public List<AlquilerDTO> mostratAlquileres(){
         return alquilerService.findAll();
     }
 
-    @PostMapping
-    public ResponseEntity<Alquiler> crearAlquiler(@RequestBody Alquiler alquiler){
-        Alquiler save = alquilerService.crearAlquiler(alquiler);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(save);
+    @GetMapping("/{id}")
+    public Optional<AlquilerDTO> mostrarAlquileresId(@PathVariable Long id){
+        return alquilerService.findById(id);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Alquiler> getAlquilerById(@PathVariable Long id) {
-        Optional<Alquiler> alquiler = alquilerService.findById(id);
-
-        if (alquiler.isPresent()) {
-            return ResponseEntity.ok(alquiler.get());
-        } else{
+    @PutMapping("/{id}")
+    public ResponseEntity<AlquilerDTO> actualizarEstado(@PathVariable Long id, @RequestBody AlquilerDTO alquilerDTO) {
+        Optional<AlquilerDTO> alquilerActualizado = alquilerService.update(id, alquilerDTO);
+        
+        if (alquilerActualizado.isPresent()) {
+            return ResponseEntity.ok(alquilerActualizado.get());
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
-    
 }

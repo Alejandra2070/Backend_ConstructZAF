@@ -95,10 +95,11 @@ fetch('http://localhost:8080/construc/alquiler', {
         datos.innerHTML+=`
             <tr>
                 <td>${a.id_alquiler}</td>
-                <td>${a.fecha_incio}</td>
+                <td>${a.nombre_usuario}</td>
+                <td>${a.nombre_herramienta}</td>
+                <td>${a.fecha_inicio}</td>
                 <td>${a.fecha_fin}</td>
-                <td>${a.precio_total}</td>
-                <td>${a.usuario}</td>
+                <td>${a.estado}</td>
             </tr>
         `;
     });
@@ -111,39 +112,82 @@ fetch('http://localhost:8080/construc/alquiler', {
 //------------------------------------------------------------------------------------
 // Mostrar Detalles del alquiler en el popup
 
-function mostrarDetallerAlquiler(idAlquiler){
-    fetch(`http://localhost:8080/construc/alquiler/${idAlquiler}`)
+function buscarAlquiler() {
+    const id = document.getElementById('id-ver').value.trim();
+    if (id === '') {
+        alert('Por favor ingresa un ID de alquiler.');
+        return;
+    }
+    mostrarDetallerAlquiler(id);
+}
+
+function mostrarDetallerAlquiler(idAlquiler) {
+    fetch(`http://localhost:8080/construc/alquiler/${idAlquiler}`,{
+        method: 'GET',
+        headers:{
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    })
         .then(response => {
-            if(!response.ok) throw new Error("No se pudo obtener el alquiler");
+            if (!response.ok) throw new Error("No se pudo obtener el alquiler");
             return response.json();
         })
         .then(alquiler => {
-            // mostrar popUp
-            document.getElementById('verPopup').style.display= 'block';
+            // Mostrar popup
+            document.getElementById('verPopup').style.display = 'block';
 
-            // Rellenar los datos del popUp
-            document.getElementById('id-ver').value = alquiler.id_alquiler;
-            document.getElementById('usuario-nombre').innerText = alquiler.usuario?.nombre || '-';
-            document.getElementById('usuario-email').innerText = alquiler.usuario?.email || '-';
-            document.getElementById('usuario-telefono').innerText = alquiler.usuario?.telefono || '-';
-            document.getElementById('usuario-cedula').innerText = alquiler.usuario?.cedula || '-';
+            // Rellenar info del usuario
+            const info = document.getElementById("info-usuario");
+            info.innerHTML = `
+                <p><strong>Usuario:</strong> ${alquiler.nombre_usuario|| '-'}</p>
+            `;
 
-            // tabla 
-
+            // Llenar tabla
             const tabla = document.querySelector('#Tabla-alqui-PopUp tbody');
-            tabla.innerHTML = '';
+            tabla.innerHTML = ''; // limpiar tabla primero
+
             const fila = document.createElement('tr');
             fila.innerHTML = `
-                <td> Herramienta </td>
-                <td>${alquiler.fecha_incio}</td>
-                <td>${alquiler.fecha_fin}</td>
-                <td>${alquiler.precio_total}</td>
+                <td>${alquiler.nombre_herramienta}</td>
+                <td>${alquiler.fecha_inicio || '-'}</td>
+                <td>${alquiler.fecha_fin || '-'}</td>
+                <td>${alquiler.precio_total || '-'}</td>
             `;
             tabla.appendChild(fila);
         })
         .catch(error => {
             alert("Error cargando datos del alquiler.");
-            console.log(error);
-            
-        })
+            console.error(error);
+            document.getElementById('verPopup').style.display = 'none';
+        });
+}
+
+function cerrarPopupAlqui(id) {
+    document.getElementById(id).style.display = 'none';
+}
+
+
+function devolver() {
+    const id = document.getElementById("id-devolucion").value;
+
+    fetch(`http://localhost:8080/construc/alquiler/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ estado: "Devuelto" })
+    })
+     .then(response => {
+        if (!response.ok) {
+            throw new Error("Error al actualizar el estado.");
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert("Estado actualizado a 'Devuelto'.");
+        cerrarPopupAlqui("devolverPopup");
+    })
+
 }
