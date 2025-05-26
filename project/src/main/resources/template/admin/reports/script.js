@@ -31,59 +31,41 @@ hamburger.addEventListener('click', () => {
     }
 })
 
-// Grafica circulas
-var xValues = ["Ingresos", "Alquileres", "Usuarios Activos", "Herramientas más usadas"];
-var yValues = [55, 49, 44, 24];
-var barColors = [
-  "#b91d47",
-  "#00aba9",
-  "#2b5797",
-  "#1e7145"
-];
+window.onload = function () {
+  fetch('http://localhost:8080/reportes')  // Cambia si usas otro puerto o ruta
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Respuesta no válida del servidor");
+      }
+      return response.json();
+    })
+    .then(data => {
+      const tabla = document.getElementById("tabla-reportes");
+      const cuerpo = document.getElementById("cuerpo-tabla");
+      const mensaje = document.getElementById("mensaje");
+      cuerpo.innerHTML = "";
 
-new Chart("myChart", {
-  type: "pie",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Ingresos por mes"
-    }
-  }
-});
+      if (!data || data.length === 0) {
+        mensaje.textContent = "No hay reportes disponibles.";
+        return;
+      }
 
-// Grafico de barras
-var xValues = ["Trompo", "Martillo", "Escalera", "Tablones", "Pulidora"];
-var yValues = [55, 49, 44, 24, 30];
-var barColors = [
-    "#b91d47",
-    "#00aba9",
-    "#2b5797",
-    "#1e7145",
-    "#00aba4"
-];
+      data.forEach(reporte => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${reporte.id_reporte}</td>
+          <td>${reporte.inventario_id}</td>
+          <td>${reporte.usuario_id}</td>
+          <td>${reporte.herramientas_mas_usadas}</td>
+        `;
+        cuerpo.appendChild(fila);
+      });
 
-new Chart("myChartBarra", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    title: {
-      display: true,
-      text: "Herramientas mas alquiladas"
-    }
-  }
-});
+      tabla.style.display = "table";
+    })
+    .catch(error => {
+      console.error("Error al cargar los reportes:", error);
+      document.getElementById("mensaje").textContent = "Error al cargar los reportes.";
+    });
+};
 
