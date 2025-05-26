@@ -37,23 +37,23 @@
             <p><img src="../../imagenes/usuario (1).png" id="user"> Administrador</p>
         </div>
 
-        <h1>Reporte de Herramientas</h1>
+        <!-- Titulo del contendo -->
+        <h2 class="title-report">Reportes</h2>
 
-        <table id="tabla-reportes" >
-            <thead>
-                <tr>
-                    <th>ID Reporte</th>
-                    <th>ID Inventario</th>
-                    <th>ID Usuario</th>
-                    <th>Herramientas Más Usadas</th>
-                </tr>
-            </thead>
-            <tbody id="cuerpo-tabla">
-                <!-- Se insertarán los datos aquí -->
-            </tbody>
-        </table>
-
-        <div id="mensaje"></div>
+        <!-- Tabla con la información de los alquileres -->
+        <div class="table-container-report">
+            <table id="miTabla-report">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Inventario</th>
+                        <th>Usuario</th>
+                        <th>Herramienta mas alquilada</th>
+                    </tr>
+                </thead>
+                <tbody id="miTablaReport"></tbody>
+            </table>
+        </div>
     </div>
 
     <script src="script.js"></script>
