@@ -36,27 +36,18 @@
                 <img id="busca-alqui" src="../../imagenes/buscar.png">
                 <input id="search-rental" class="buscar-alqui" type="text" placeholder="Buscar" onkeyup="searchRental()">
             </div>
-            <p><img src="../../imagenes/usuario (1).png" id="user"> Administrador</p>
+            <div class="userMenu">
+                <div id="userName" class="userName">
+                    <img src="../../imagenes/usuario (1).png" id="user"> Administrador
+                </div>
+                <div id="user-menu" class="user-menu">
+                    <a href="../../Login/index.html">Cerrar Sesión</a>
+                </div>
+            </div>
         </div> 
 
         <!-- Titulo del contendo -->
         <h2 class="title-alqui">Gestion de Alquileres</h2>
-
-        <!-- Cartas de informacion en general de los alquileres -->
-        <div class="info-alqui">
-            <div class="cards">
-                <h3>Total de alquileres</h3>
-                <p>15</p>
-            </div>
-            <div class="cards">
-                <h3>Herramientas en uso</h3>
-                <p>4</p>
-            </div>
-            <div class="cards">
-                <h3>Herramientas devueltas</h3>
-                <p>11</p>
-            </div>
-        </div>
 
         <!-- Tabla con la información de los alquileres -->
         <div class="table-container-alqui">
@@ -151,11 +142,11 @@
                         </div>
                         <div class="form-group">
                             <label for="id">Descripción del daño</label>
-                            <textarea name="" id="id-devolucion"></textarea>
+                            <textarea name="" id="descripcion-dano"></textarea>
                         </div>
                     </div>
                     <div class="botonesAlqui">
-                        <button type="submit" class="btn-amarillo">Confirmar devolución</button>
+                        <button type="button" class="btn-amarillo" onclick="reporte()">Confirmar devolución</button>
                         <button type="button" class="btn-gris" onclick="cerrarPopupAlqui('DanoPopup')">Cancelar</button>
                     </div>
                 </form>

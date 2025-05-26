@@ -2,9 +2,6 @@ package com.constructzaf.project.domain;
 
 import java.util.List;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,23 +21,18 @@ public class Inventario {
     private boolean disponibilidad;
     private int cantidad;
 
-    @OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)
-    private List<Reporte> reportes;
-
     @ManyToOne
     @JoinColumn(name = "id_herramienta")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Herramientas herramienta;
 
     public Inventario() {
     }
 
-    public Inventario(Long id_inventario, boolean disponibilidad, int cantidad, List<Reporte> reportes,
+    public Inventario(Long id_inventario, boolean disponibilidad, int cantidad,
             Herramientas herramienta) {
         this.id_inventario = id_inventario;
         this.disponibilidad = disponibilidad;
         this.cantidad = cantidad;
-        this.reportes = reportes;
         this.herramienta = herramienta;
     }
 
@@ -66,14 +58,6 @@ public class Inventario {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public List<Reporte> getReportes() {
-        return reportes;
-    }
-
-    public void setReportes(List<Reporte> reportes) {
-        this.reportes = reportes;
     }
 
     public Herramientas getHerramienta() {

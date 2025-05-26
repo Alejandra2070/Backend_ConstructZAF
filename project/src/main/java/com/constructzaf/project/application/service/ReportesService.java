@@ -8,4 +8,8 @@ public interface ReportesService {
 
     List<Reporte> findAll();
 
+    Reporte save(Reporte reporte);
+
+    Reporte crearReporteParaHerramienta(Long idHerramienta, Reporte reporte);
+
 }
