@@ -191,3 +191,56 @@ function devolver() {
     })
 
 }
+
+function reporte() {
+    const id = document.getElementById('id-dano').value;
+    const descripcion = document.getElementById('descripcion-dano').value;
+
+    const nuevoReporte = {
+        descripcion_daño: descripcion,
+        herramientas_mas_usadas: "" 
+    };
+
+    fetch(`http://localhost:8080/construc/reportes/${id}`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(nuevoReporte)
+    })
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Error al crear usuario');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Reporte creado exitosamente');
+        cerrarPopupAlqui('DanoPopup');
+        document.querySelector('#DanoPopup form').reset();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('No se pudo crear el reporte');
+    });
+}
+
+
+// Mostrar y ocultar el menu del usuario 
+
+document.getElementById("userName").addEventListener("click", function(event){
+    event.stopPropagation(); // Evita el cierre inmediato
+    const menu = document.getElementById("user-menu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+
+// Cierra el menu si se hace click afuera de el 
+document.addEventListener("click", function(event){
+    const menu = document.getElementById("user-menu");
+    const name = document.getElementById("userName");
+
+    if(!name.contains(event.target) && !menu.contains(event.target)){
+        menu.style.display = "none";
+    }
+})

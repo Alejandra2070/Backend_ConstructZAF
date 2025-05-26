@@ -15,23 +15,26 @@ public class Reporte {
     private Long id_reporte;
 
     private String herramientas_mas_usadas;
+    private String descripcion_daño;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuarios usuario;
 
     @ManyToOne
-    @JoinColumn(name = "inventario_id")
-    private Inventario inventario;
+    @JoinColumn(name = "herramienta_id")
+    private Herramientas herramienta;
 
     public Reporte() {
     }
 
-    public Reporte(Long id_reporte, String herramientas_mas_usadas, Usuarios usuario, Inventario inventario) {
+    public Reporte(Long id_reporte, String herramientas_mas_usadas, String descripcion_daño, Usuarios usuario,
+        Herramientas herramienta) {
         this.id_reporte = id_reporte;
         this.herramientas_mas_usadas = herramientas_mas_usadas;
+        this.descripcion_daño = descripcion_daño;
         this.usuario = usuario;
-        this.inventario = inventario;
+        this.herramienta = herramienta;
     }
 
     public Long getId_reporte() {
@@ -50,6 +53,14 @@ public class Reporte {
         this.herramientas_mas_usadas = herramientas_mas_usadas;
     }
 
+    public String getDescripcion_daño() {
+        return descripcion_daño;
+    }
+
+    public void setDescripcion_daño(String descripcion_daño) {
+        this.descripcion_daño = descripcion_daño;
+    }
+
     public Usuarios getUsuario() {
         return usuario;
     }
@@ -58,11 +69,11 @@ public class Reporte {
         this.usuario = usuario;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public Herramientas getHerramienta() {
+        return herramienta;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
+    public void setHerramienta(Herramientas herramienta) {
+        this.herramienta = herramienta;
     }
 }
